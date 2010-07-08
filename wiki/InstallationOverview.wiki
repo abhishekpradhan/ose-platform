@@ -1,0 +1,37 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+The code in the top folder is 
+{{{
+/
+    /annieDB
+    /annieIndex
+    /annieSearch
+    /annieWeb
+    /lbjSearch
+    /osBuilder
+}}}
+
+Each folder contains a module of AnnieSearch. The module dependency is as following : 
+
+annieDB <-- annieIndex <-- annieSearch  <-- annieWeb, lbjSearch
+
+osBuilder is a standalone python django program that handles domain specific search engine code generation, plus a couple of tools. 
+
+Each java module has been provided with ant build file. To build everything, go to lbjSearch folder and type
+{{{
+ant deps               # --> build all required modules
+ant updateJar          # --> put updated jars into /lib folder
+ant dist               # --> build jar files into /dist folder
+}}}
+
+= Details =
+
+For specific module, see
+
+ * AnnieWebModule
+ * AnnieIndexModule
+ * AnnieSearchModule
+ * LbjSearchModule
+ * OsBuilderModule
