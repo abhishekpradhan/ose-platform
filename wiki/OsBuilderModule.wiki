@@ -14,9 +14,12 @@ The OSB is a tool to train a new vertical search engine. Typical usages include:
 
 == Build a new vertical search engine? ==
 
- * HowToBuildNewVerticalSearchEngine
+Here are the steps required to build a new vertical. Even though these steps are listed sequentially, they can be done after any other step in a spiral manner. For example : 1-->2-->3-->2-->3--> 4-->2-->3-->4....
 
- * HowToEvaluateObjectSearch
+ 1. DomainSpecification     : specify object fields and its data type.
+ 1. DataAnnotation          : label web pages with object information.
+ 1. RankingFunctionLearning : use labeled data to learn a ranking function. 
+ 1. TestingAndValidation    : try them in the new object search engine. 
 
 == Export documents with annotations? ==
 
