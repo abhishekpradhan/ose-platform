@@ -1,4 +1,4 @@
-#Starting page for OSE documentation
+#summary Starting page for OSE documentation
 
 = Introduction =
 
