@@ -1,6 +1,6 @@
 #summary Tool to quickly view and annotate web pages.
 
-[[Image(pageviewer.png,right,600px)]]
+[http://warbler.cs.uiuc.edu:8080/trac/attachment/wiki/DataAnnotation/pageviewer.png]
 
 If you setup correctly, you should be able to open PageViewer tool at the address http://warbler.cs.uiuc.edu/annieWeb/professor/pageviewer.html. Note that this is under "professor" folder in AnnieWeb. If you want to annotate data for other domain (e.g : real estate), make sure you generate the code for that domain first.
 
