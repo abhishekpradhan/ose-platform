@@ -1,3 +1,5 @@
+#summary Indexing module
+
 == Indexer ==
 {{{
 ant "trec indexer" -Dtrec=c:\working\lbjSearch\30000_dedup.htmltrec -Dpath=c:\working\annieIndex\combine_dedup_index -Doptions=--create
