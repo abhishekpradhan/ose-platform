@@ -33,7 +33,7 @@ Here are the steps required to build a new vertical. Even though these steps are
  1. Open the tool [http://warbler.cs.uiuc.edu/lbjseWeb/camera/osBuilder.html for camera]
  1. Click "Load Indices", then select appropriate index to export.
  1. Click the button "Annotation Search". The result panel will display all the document  with annotation.
- 1. User can narrow the search by providing criteria for each field of annotation. For example, put "canon" to the "Brand" textbox and click "Annotation Search" will result only those tagged with "canon". Put "_range(4,5)" in the "mpix" textbox will result only those tagged with mpix from 4 to 5. 
+ 1. User can narrow the search by providing criteria for each field of annotation. For example, put "canon" to the "Brand" textbox and click "Annotation Search" will result only those tagged with "canon". Put "range(4,5)" in the "mpix" textbox will result only those tagged with mpix from 4 to 5. 
 
 == How to annotate? ==
 
