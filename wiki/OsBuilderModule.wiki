@@ -1,0 +1,42 @@
+#summary Tools to build a new vertical search engine.
+
+The OSB is a tool to train a new vertical search engine. Typical usages include:
+
+   * Data Annotation : User would interact with a light weight search engine, pull interesting documents out and annotate them with values used to latter train the classifiers/rankers.
+   * Feature Design : User can add/remove features that helps ranking different fields of the object. In AnnieSearch, features are crafted from a sophisticated feature language. In LbjSearch, features are selected from a list. 
+   * Export data : User can export data (e.g : document and annotations) from the database into text file, for other studies. 
+
+= Access to the tools =
+   * LbjSearch : [http://warbler.cs.uiuc.edu/lbjseWeb/camera/osBuilder.html camera domain] [http://warbler.cs.uiuc.edu/lbjseWeb/ other domains]
+   * AnnieSearch : [http://warbler.cs.uiuc.edu/annieWeb/ all domains]
+
+= How to guide =
+
+== Build a new vertical search engine? ==
+
+ * HowToBuildNewVerticalSearchEngine
+
+ * HowToEvaluateObjectSearch
+
+== Export documents with annotations? ==
+
+ 1. Open the tool [http://warbler.cs.uiuc.edu/lbjseWeb/camera/osBuilder.html for camera]
+ 1. Click "Load Indices", then select appropriate index to export.
+ 1. Click "Download Data" on the left panel, near the bottom.
+ 1. Save the file onto your computer.
+
+== Explore annotations? ==
+
+ 1. Open the tool [http://warbler.cs.uiuc.edu/lbjseWeb/camera/osBuilder.html for camera]
+ 1. Click "Load Indices", then select appropriate index to export.
+ 1. Click the button "Annotation Search". The result panel will display all the document  with annotation.
+ 1. User can narrow the search by providing criteria for each field of annotation. For example, put "canon" to the "Brand" textbox and click "Annotation Search" will result only those tagged with "canon". Put "_range(4,5)" in the "mpix" textbox will result only those tagged with mpix from 4 to 5. 
+
+== How to annotate? ==
+
+ 1. Open the tool [http://warbler.cs.uiuc.edu/lbjseWeb/camera/osBuilder.html for camera]
+ 1. Click "Load Indices", then select appropriate index to export.
+ 1. Use "Search by Feature" feature to find documents to annotate (this is currently only work for AnnieSearch builder)
+ 1. Click on the result
+ 1. Either add annotation manually in the tagging panel (in the middle ) or 
+ 1. Select the text in the bottom frame, hit "Ctrl + Right Click", a menu will pop up, select the appropriate field for the tag value. After filling all the tags, click "Add" in the tagging panel
