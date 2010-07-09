@@ -36,3 +36,38 @@ ant "rank features" -Dsession=42 -Ddata=9
 {{{
 ant "LBJ learn" -Dsession=42 -Dtrec=c:\working\lbjSearch\grad_30002.tagtrec -Dnrounds=2
 }}}
+
+== More commands ==
+
+
+== Evaluate Google Result ==
+ 1. google to rresult
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "google to rresult" -DtopK=1000 -Dindex=20004 -DinputPrefix=C:\working\lbjSearch\google\ranking\professor\r -DoutputPrefix=C:\working\lbjSearch\google\ranking\professor\rresult.long -Dfrom=1005 -Dto=1005
+}}}
+ 1. rresult to html
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "rresult to html" -Ddomain=professor -Dindex=20004 -Drresult=C:\working\lbjSearch\google\ranking\professor\rresult.1005
+}}}
+ 1. export tagtrec
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "export tagtrec" -Dindex=20004 -Ddomain=2 -Doutput=C:\working\lbjSearch\professor_20004.tagtrec
+}}}
+ 1. update rresult
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "update rresult" -Dtagtrec=C:\working\lbjSearch\professor_20004.tagtrec -Dquery=1005 -Drresult=C:\working\lbjSearch\google\ranking\professor\rresult.1005
+}}}
+ 1. evaluate rresult
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "evaluate rresult" -Dmode=map -Drresult=C:\working\lbjSearch\google\ranking\professor\rresult.1005.update
+}}}
+ 1. lbjsearch experiment
+{{{
+D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
+ant "lbjsearch experiment" -Dtagtrec=C:\working\lbjSearch\professor_20004.tagtrec -Dindex=20004 -Doutput=C:\working\lbjSearch\lbjsearchexperiment\rresult -Dfrom=1004 -Dto=1005
+}}}
