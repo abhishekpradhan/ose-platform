@@ -38,28 +38,33 @@ ant dist               # --> build jar files into /dist folder
    * Subversion client : (e.g : [http://tortoisesvn.tigris.org/ TortoiseSVN] for Windows)
       * [http://aymanh.com/subversion-a-quick-tutorial#CheckoutModifyCommit A quick tutorial]
 
-== Checking out and set up dev environment ==
-   
-   * Check out the code using command 
+
+==== Checking out and set up dev environment ====
+
+  
+ 1. Check out the code using command 
 
      svn co svn://warbler.cs.uiuc.edu/ObjectSearch/core
 
-   * Import annieSearch into Eclipse
+ 1. Import annieSearch into Eclipse
 
      you need to resolve some missing library path. More details to come
 
-   * Import annieWeb into Eclipse.
+ 1. Import annieWeb into Eclipse.
 
      Make it depend on annieSearch.
      You'll need to resolve some missing configuration for Tomcat
 
-== Testing it works ==
+==== Testing it works ====
 
    * If everything is fine. You can start running Tomcat inside Eclipse to test
 
    * After starting Tomcat inside Eclipse, which starts a server at port 8080, point your browser to
      http://localhost:8080/annieWeb/TestFeatureQuery.html
      And hit "Search"
+
+==== More installation nodes ====
+ * InstallationNotes
 
 = Details =
 
