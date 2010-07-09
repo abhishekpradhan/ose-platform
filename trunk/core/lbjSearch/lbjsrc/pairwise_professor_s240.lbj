@@ -1,0 +1,28 @@
+package lbj.professor.pairwise;
+
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import LBJ2.classify.*;
+import java.util.*;
+import common.GenericPair;
+
+real% name_features(GenericPair pp) <-
+{
+    DocQueryPair pair1 = (DocQueryPair) pp.getFirst();
+    DocQueryPair pair2 = (DocQueryPair) pp.getSecond();
+    List diffFeatures = Utils.differentiateFeatures(new lbj.professor.name_features(),pair1, pair2);
+    for (Iterator it = diffFeatures.iterator(); it.hasNext(); ){
+        RealFeature f = (RealFeature) it.next();
+        sense f.getIdentifier() : f.getValue();
+    }
+}
+
+discrete{false, true} name_ranker(GenericPair pair) <-
+learn PairOracle
+  using name_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

@@ -1,0 +1,72 @@
+package lbj.laptop;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import java.util.*;
+import LBJ2.nlp.*;
+import LBJ2.classify.*;
+
+discrete NumberInTitle_hdd(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("hdd");
+	Collection c = dq.getDoc().getTokenizedTitle();
+	boolean inTitle = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (Utils.satisfyConstraint(new Word(w), fieldValue)){ 
+			inTitle = true;
+			break;
+		}
+	}
+	return inTitle;
+}
+
+discrete NumberInBody_hdd(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("hdd");
+	Collection c = dq.getDoc().getTokenizedBody();
+	boolean inBody = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (Utils.satisfyConstraint(new Word(w), fieldValue)){ 
+			inBody = true;
+			break;
+		}
+	}
+	return inBody;
+}
+
+discrete% NumericSurroundingWordsInTitle_hdd(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedTitle = Utils.convertToLinkedVector( dq.getDoc().getTokenizedTitle() );
+	String fieldValue = dq.getQuery().getFieldValue("hdd");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedTitle, fieldValue,-5,5);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+discrete% NumericSurroundingWordsInBody_hdd(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("hdd");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-5,5);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+mixed% hdd_features(DocQueryPair dq) <-
+	 NumericSurroundingWordsInTitle_hdd,	 
+	 NumericSurroundingWordsInBody_hdd,
+	 NumberInTitle_hdd,
+	 NumberInBody_hdd
+	 
+discrete{false, true} hdd_ranker(DocQueryPair dq) <-
+learn Oracle
+  using hdd_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="lbjSearch">
+    <property environment="env"/>
+    <property name="lbjseWeb.location" value="../lbjseWeb"/>
+    <property name="annieSearch.location" value="../annieSearch"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="lib" value="lib"/>
+    <property name="build_java" value="build/classes"/>
+    <property name="build_lbj" value="lbj"/>
+    <property name="dist" value="dist"/>
+    <import file="osconfig.xml"/>
+    <path id="lbjSearch.classpath">
+        <pathelement location="build/classes"/>
+        <pathelement location="lbj"/>
+        <pathelement location="lib/commons-logging.jar"/>
+        <pathelement location="lib/commons-lang-2.3.jar"/>
+        <pathelement location="data"/>
+        <pathelement location="lib/AnnieDB.jar"/>
+        <pathelement location="lib/AnnieIndex.jar"/>
+        <pathelement location="lib/AnnieSearch.jar"/>
+        <pathelement location="lib/lucene-2.3.2.jar"/>
+        <pathelement location="lib/LBJ2Library.jar"/>
+        <pathelement location="lib/LBJ2.jar"/>
+        <pathelement location="lib/weka-3.4.5.jar"/>
+        <pathelement location="lib/mysql-connector-java-5.1.5-bin.jar"/>
+    </path>
+    <property name="classpath" refid="lbjSearch.classpath"/>
+    <target name="test">
+        <echo>${classpath}</echo>
+    </target>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="lbjsrc" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="conf" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="compile" name="build"/>
+    <target depends="init" name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="lbjsrc:src"/>
+	    <exclude name="testing/**"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="lbjsrc"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="conf"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </javac>
+    </target>
+    <target name="dist" depends="compile" description="generate the distribution" >
+      <!-- Create the distribution directory -->
+      <mkdir dir="${dist}/lib"/>
+      <jar jarfile="${dist}/lib/LbjSearch.jar">
+         <fileset dir="${build_java}"/>
+         <fileset dir="${build_lbj}"/>
+      </jar>
+    </target>
+    <target name="updateJar" description="update AnnieDB.jar, AnnieIndex.jar">
+      <!--
+      <copy todir="${lib}" file="../weka-3.5.6/dist/lib/weka-3.5.6.jar"/>
+      <copy todir="${lib}" file="../lucene-2.3.2/build/lucene-core-2.3.jar"/>
+      -->
+      <copy todir="${lib}" file="../annieDB/dist/lib/AnnieDB.jar"/>
+      <copy todir="${lib}" file="../annieIndex/dist/lib/AnnieIndex.jar"/>
+      <copy todir="${lib}" file="../annieSearch/dist/lib/AnnieSearch.jar"/>
+    </target>	
+
+    <target description="Build all dependent projects." name="deps">
+        <ant antfile="${annieSearch.location}/build.xml" inheritAll="false" target="deps"/>
+        <ant antfile="${annieSearch.location}/build.xml" inheritAll="false" target="dist"/>
+	<ant target="updateJar"/>
+    </target>
+    <target name="LBJ compile">
+        <java classname="LBJ2.Main" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="-sourcepath src -gsp lbjsrc -d lbj  lbjsrc/${lbjsrc}.lbj"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <import file="runtasks.xml"/>
+    <import file="exp_tasks.xml"/>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/lbjse/lbjSearch/lib/AnnieIndex.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/lbjSearch/make_AnnieIndexJar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose.index"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose.db"/>
+        <file path="/annieIndex/test_9d.trec"/>
+        <file path="/annieIndex/luceneJar.jardesc"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose.index.tool"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache.lucene"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose.db.tool"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache.lucene.analysis"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;common.profiling{Profile.java"/>
+        <file path="/annieIndex/.project"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache.nutch.tools"/>
+        <file path="/annieIndex/test_1d.html~"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose"/>
+        <file path="/annieIndex/test.trec~"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache.nutch"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache"/>
+        <file path="/annieIndex/test_1d.html"/>
+        <file path="/annieIndex/.classpath"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;lbjse.data"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;org.apache.lucene.analysis.miscellaneous"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;common{CommandLineOption.java"/>
+        <file path="/annieIndex/annieIndex.jardesc"/>
+        <file path="/annieIndex/test_1d.trec"/>
+        <javaElement handleIdentifier="=annieIndex/src&lt;ose.html"/>
+    </selectedElements>
+</jardesc>

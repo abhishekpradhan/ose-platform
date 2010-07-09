@@ -1,0 +1,143 @@
+Buildfile: build.xml
+
+train concrete:
+     [java] DBManager Initialized with parameters : 
+     [java] Connection : jdbc:mysql://localhost:3306/objectsearch
+     [java] Username : objectsearch
+     [java] Password : objectsearch
+     [java] TrainingSession : Initializing with LbjseTrainingSession(2,10,professor_area,lbj.professor.area_ranker,lbj.professor.area_features,null)
+     [java] Number of queries 4
+     [java] initFeatures session 5
+     [java] Feature : lbj.professor:InBody_area(true)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(interests)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(research)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(in)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(on)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(my)
+     [java] Feature : lbj.professor:SurroundingWordsInBody_area(group)
+     [java] Initialized with 7 features. 
+     [java] ........................................
+     [java] ........................................
+     [java] ........................................
+     [java] ..........one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.554 99.842 99.194   5052   5118
+     [java] true        55.556 11.905 19.608     84     18
+     [java] ----------------------------------------------
+     [java] Accuracy    98.403   -      -      -      5136
+     [java] Accuracy : 0.9840342679127726
+     [java] ..............................
+     [java] ........................................
+     [java] ........................................
+     [java] ....................one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.592 99.822 99.203   5052   5115
+     [java] true        57.143 14.286 22.857     84     21
+     [java] ----------------------------------------------
+     [java] Accuracy    98.423   -      -      -      5136
+     [java] Accuracy : 0.9842289719626168
+     [java] ....................
+     [java] ........................................
+     [java] ........................................
+     [java] ..............................one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.573 99.842 99.203   5052   5117
+     [java] true        57.895 13.095 21.359     84     19
+     [java] ----------------------------------------------
+     [java] Accuracy    98.423   -      -      -      5136
+     [java] Accuracy : 0.9842289719626168
+     [java] ..........
+     [java] ........................................
+     [java] ........................................
+     [java] ........................................
+     [java] one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.707 99.743 99.222   5052   5105
+     [java] true        58.065 21.429 31.304     84     31
+     [java] ----------------------------------------------
+     [java] Accuracy    98.462   -      -      -      5136
+     [java] Accuracy : 0.9846183800623053
+     [java] ........................................
+     [java] ........................................
+     [java] ........................................
+     [java] ...........one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.784 99.723 99.251   5052   5100
+     [java] true        61.111 26.190 36.667     84     36
+     [java] ----------------------------------------------
+     [java] Accuracy    98.520   -      -      -      5136
+     [java] Accuracy : 0.985202492211838
+     [java] .............................
+     [java] ........................................
+     [java] ........................................
+     [java] .....................one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.861 99.683 99.271   5052   5094
+     [java] true        61.905 30.952 41.270     84     42
+     [java] ----------------------------------------------
+     [java] Accuracy    98.559   -      -      -      5136
+     [java] Accuracy : 0.9855919003115264
+     [java] ...................
+     [java] ........................................
+     [java] ........................................
+     [java] ...............................one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.919 99.663 99.290   5052   5090
+     [java] true        63.043 34.524 44.615     84     46
+     [java] ----------------------------------------------
+     [java] Accuracy    98.598   -      -      -      5136
+     [java] Accuracy : 0.985981308411215
+     [java] .........
+     [java] ........................................
+     [java] ........................................
+     [java] ........................................
+     [java] .one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.919 99.663 99.290   5052   5090
+     [java] true        63.043 34.524 44.615     84     46
+     [java] ----------------------------------------------
+     [java] Accuracy    98.598   -      -      -      5136
+     [java] Accuracy : 0.985981308411215
+     [java] .......................................
+     [java] ........................................
+     [java] ........................................
+     [java] ...........one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.919 99.663 99.290   5052   5090
+     [java] true        63.043 34.524 44.615     84     46
+     [java] ----------------------------------------------
+     [java] Accuracy    98.598   -      -      -      5136
+     [java] Accuracy : 0.985981308411215
+     [java] .............................
+     [java] ........................................
+     [java] ........................................
+     [java] ......................one round
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.919 99.644 99.280   5052   5089
+     [java] true        61.702 34.524 44.275     84     47
+     [java] ----------------------------------------------
+     [java] Accuracy    98.579   -      -      -      5136
+     [java] Accuracy : 0.9857866043613707
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       98.919 99.644 99.280   5052   5089
+     [java] true        61.702 34.524 44.275     84     47
+     [java] ----------------------------------------------
+     [java] Accuracy    98.579   -      -      -      5136
+     [java] Accuracy : 0.9857866043613707
+     [java] Profiling result
+     [java] Profile runtime --> 224711 milliseconds
+     [java] ----------------
+
+BUILD SUCCESSFUL
+Total time: 3 minutes 46 seconds

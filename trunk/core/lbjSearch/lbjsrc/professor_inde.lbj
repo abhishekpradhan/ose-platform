@@ -1,0 +1,206 @@
+package lbjse.learning.professor.inde;
+import lbjse.objectsearch.*;
+import java.util.*;
+
+discrete{false, true} Oracle(DocQueryPair dq) <-
+{
+  return dq.oracle();
+}
+
+discrete% univ_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("univ");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-10,10);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}	
+}
+
+discrete% dept_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("dept");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-10,10);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}	
+}
+
+discrete% WordsInTitle(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle(); 
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense "" : ((String) it.next()).toLowerCase(); 
+}
+
+discrete% name_SurroundingWordInBody(DocQueryPair dq) <-
+{	
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("name");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-3,3);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}	
+}
+
+discrete% area_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("area");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-30,-1);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "front" : pair.getWord();
+	}
+		
+	LinkedVector subsequentFeatures = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,1,30);
+	for (PositionWordPair pair = (PositionWordPair) subsequentFeatures.get(0); pair != null; pair = (PositionWordPair) subsequentFeatures.next){
+		sense "back" : pair.getWord();
+	}
+}
+
+discrete name_InTitle(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("name");
+	Collection c = dq.getDoc().getTokenizedTitle();
+	boolean inTitle = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (Utils.contains(fieldValue,w)){ 
+			inTitle = true;
+			break;
+		}
+	} 
+	return inTitle;
+}  
+  
+
+discrete% WordsInTitle_InDict(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle();
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (WordDict.contains(w))
+			sense "" : w; 
+	}
+}  
+
+
+discrete% WordsInBody(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense "" : ((String) it.next()).toLowerCase(); 
+}  
+
+discrete% WordsInBody_InDict(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (WordDict.contains(w))
+			sense "" : w; 
+	}
+}  
+
+discrete% BigramWordsInBody_InDict(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+	String previous = null;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (WordDict.contains(w)){
+			if (previous != null)
+				sense "" : previous + "_" + w;
+			previous = w; 
+		}
+	}
+}  
+
+discrete% WordsInTitleInLists(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle();
+
+	for (Iterator it = c.iterator(); it.hasNext(); )
+  {
+    String word = (String) it.next();
+    LinkedList lists = ListMembership.containedIn(word.toLowerCase());
+    //if (lists.size() == 0) sense "No" : word;
+    for (Iterator I = lists.iterator(); I.hasNext(); )
+      sense "" : I.next();
+  }
+}  
+
+discrete% WordsInBodyInLists(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+
+	for (Iterator it = c.iterator(); it.hasNext(); )
+  {
+    String word = (String) it.next();
+    LinkedList lists = ListMembership.containedIn(word.toLowerCase());
+    //if (lists.size() == 0) sense "No" : word;
+    for (Iterator I = lists.iterator(); I.hasNext(); )
+      sense "" : I.next();
+  }
+}  
+
+
+mixed% univ_features(DocQueryPair dq) <-
+	 univ_SurroundingWordInBody 
+	
+mixed% dept_features(DocQueryPair dq) <-
+	 dept_SurroundingWordInBody 
+
+mixed% name_features(DocQueryPair dq) <-
+	 name_SurroundingWordInBody, 
+	 name_InTitle
+
+mixed% area_features(DocQueryPair dq) <-
+	 area_SurroundingWordInBody	 
+
+mixed% other_features(DocQueryPair dq) <-
+	 //WordsInTitle, 
+	 WordsInTitle_InDict,
+	 WordsInBody_InDict
+	 //BigramWordsInBody_InDict
+	
+
+mixed% other_features_in_lists(DocQueryPair dq) <-
+	 WordsInTitleInLists, 
+	 WordsInBodyInLists 
+	
+
+discrete{false, true} other_ranker(DocQueryPair dq) <-
+learn Oracle
+  using other_features
+  //from new DocQueryFileParser("annotated_docs_index_30000_domain_2.trec","C:\\working\\query.txt") 10 rounds  
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+
+discrete{false, true} univ_ranker(DocQueryPair dq) <-
+learn Oracle
+  using univ_features
+  with new SparseAveragedPerceptron(1.0, 0, 2)   
+end
+
+discrete{false, true} dept_ranker(DocQueryPair dq) <-
+learn Oracle
+  using dept_features
+  with new SparseAveragedPerceptron(1.0, 0, 2)   
+end
+
+discrete{false, true} name_ranker(DocQueryPair dq) <-
+learn Oracle
+  using name_features
+  with new SparseAveragedPerceptron(1.0, 0, 2)   
+end
+
+discrete{false, true} area_ranker(DocQueryPair dq) <-
+learn Oracle
+  using area_features
+  with new SparseAveragedPerceptron(1.0, 0, 2)   
+end
