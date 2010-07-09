@@ -41,7 +41,7 @@ There's some obsolete learning code in the module too (using weka learning toolk
 
 
 
-== FeatureLanguage ==
+== Feature Language ==
 
 === Query field ===
 are denoted as ALL-CAPITAL word, e.g : BRAND for brand, PRICE for price...
