@@ -1,0 +1,17 @@
+Hi David,
+
+We are submitting our application. 
+Below is the URL:
+http://www.tinyurl.com/icourse
+or
+http://warbler.cs.uiuc.edu/annieWeb/icourse/demo/search.html
+
+In the link I pasted above contains manuals for describing the application and a summary of how one uses this application.
+The User Manual is: http://warbler.cs.uiuc.edu/annieWeb/icourse/demo/user%20manual.html
+Developer Manual: http://warbler.cs.uiuc.edu/annieWeb/icourse/demo/dev%20manual.html
+
+And we also included a page describing how the project met the contest criteria.
+http://warbler.cs.uiuc.edu/annieWeb/icourse/demo/about.html
+
+Lastly, This is the URL to our documented source code and build files of our application.
+http://warbler.cs.uiuc.edu/chpc/submission_icourse.tar.gz

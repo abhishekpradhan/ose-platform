@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>annieSearch Demo 2 : Camera Search</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+        <!-- Dependency -->
+        <script type="text/javascript" src="js/yahoo-min.js" ></script>
+
+        <!--CSS file (default YUI Sam Skin) -->
+        <link type="text/css" rel="stylesheet" href="js/datatable-skin.css">
+        <!--link type="text/css" rel="stylesheet" href="/js/yui/build/assets/skins/sam/datatable.css"-->
+
+        <!-- Dependencies -->
+        <script type="text/javascript" src="js/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="js/element-beta-min.js"></script>
+        <script type="text/javascript" src="js/datasource-beta-min.js"></script>
+        <!-- Event source file -->
+        <script type="text/javascript" src="js/event-min.js" ></script>
+
+
+        <!-- OPTIONAL: External JSON parser from http://www.json.org/ (enables JSON validation) -->
+        <script type="text/javascript" src="js/json.js"></script>
+
+        <!-- OPTIONAL: Connection (enables XHR) -->
+        <script type="text/javascript" src="js/connection-min.js"></script>
+
+        <!-- OPTIONAL: Drag Drop (enables resizeable columns) -->
+        <script type="text/javascript" src="js/dragdrop-min.js"></script>
+
+        <!-- OPTIONAL: Calendar (enables calendar editors) -->
+        <script type="text/javascript" src="js/calendar-min.js"></script>
+
+        <!-- Source files -->
+        <script type="text/javascript" src="js/datatable-beta-min.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="js/container.css">
+
+        <script type="text/javascript" src="js/container-min.js"></script>
+
+        <script type="text/javascript" src="js/prototype.js"></script>
+        
+        <script type="text/javascript" src="camSearch.js"></script>
+        <script type="text/javascript" src="util.js"></script>
+        <script type="text/javascript">
+        </script>
+
+        <link type="text/css" rel="stylesheet" href="google.css">
+        <link type="text/css" rel="stylesheet" href="googleMod.css">
+        <style>
+
+		#MyPageTableDiv table {border-collapse:collapse; width: 100%;}
+        
+        </style>
+
+        
+    </head>
+    <body onload = "init()" class="yui-skin-ibnog" >
+<p><font size="4">Vertical Search Demo : Camera Domain</font></p>
+<FORM id="annieForm" ACTION="">
+<table border="0" width="100%" id="table2">
+	<tr>
+		<td>
+<table border="1" width="30%" style="border-collapse: collapse" id="table3">
+	<tr>
+		<td><b>Brand</b> </td>
+		<td width="220"><input type="text" name="brand" size="41" value="canon" onchange="onQueryChange()"></td>
+	</tr>
+	<tr>
+		<td height="26"><b>Model</b> </td>
+		<td height="26" width="220"><input type="text" name="model" size="41" onchange="onQueryChange()"></td>
+	</tr>
+	<tr>
+		<td><b>Price</b></td>
+		<td width="220">min <input type="text" name="priceMin" size="12" onchange="onQueryChange()"> max
+		<input type="text" name="priceMax" size="12" onchange="onQueryChange()"></td>
+	</tr>
+	<tr>
+		<td><b>Megapixel</b></td>
+		<td width="220">min <input type="text" name="mpMin" size="12" onchange="onQueryChange()"> max
+		<input type="text" name="mpMax" size="12" onchange="onQueryChange()"></td>
+	</tr>
+	<tr>
+		<td><b>Zoom</b></td>
+		<td width="220">min <input type="text" name="zoomMin" size="12" onchange="onQueryChange()"> max
+		<input type="text" name="zoomMax" size="12" onchange="onQueryChange()"></td>
+	</tr>
+</table>
+		</td>
+        <td><div> 
+                <b>Evaluation for query </b> : <span id="evalQueryId">n/a</span>
+                <br>
+                <b>Average Precision</b> : <span id="avgPrecision">n/a</span> 
+                <br>			
+                <b>Number of Relevant</b> : <span id="nRelevant">n/a</span>
+			</div></td>
+	</tr>
+</table>
+	<p><b>Index</b>
+            <select id="IndexSelection" size="1" name="IndexSelection" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select></p>
+<p><b>Query</b>
+            <select id="QuerySelection" size="1" name="query" onchange="selectQuery()">
+            <option selected value="Select query from the drop down box or in the form above">Select query
+			</option>
+            </select><input type="text" id="QueryTextBox" name="query" size="100"></p>
+	<p>
+	<b>Feature Query</b>
+	<input type="text" id="FeatureQueryTextBox" name="featureQuery" size="92">id=<input type="text" id="fqueryId" name="fqueryId" size="8" value="100" ></p>
+<p>
+	<input type="button" value="Search Camera" name="search" onclick="submitCameraSearchQueryFromIndex(0)">
+    <input type="button" value="Search Professor" name="search" onclick="submitSearchProfessorQueryFromIndex(0)">
+    <input type="button" value="Submit Feedback" name="feedback" onclick="submitFeedbackData()">
+
+	<input type="button" value="Rank Relevant Docs Only" name="B2" onclick="submitSearchQueryFromIndex(-1)">
+	<input type="button" value="Baseline Search" name="baselineSearch" onclick="submitBaselineSearchQueryFromIndex(0)">
+</p>
+
+
+	<div id = "MyPageTableDiv" >
+	</div>
+    <div id="dt-pag-nav">
+        <p align="left">
+        <span id="prevLink"><</span> Showing items
+        <span id="startIndex">0</span> - <span id="endIndex">100</span>
+        <span id="ofTotal"></span> <span id="nextLink">> ------------- </span>
+	<input type="button" value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()"> 
+		<input type="text" id="txtJumpTo" name="jumpTo" size="12" ></div>
+    <input type="button" value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()">
+</FORM>
+
+<p><textarea id="scratchBox" rows="4" name="S1" cols="80"></textarea></p>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>annieSearch Demo 2 : Camera Search</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        
+        <!-- source file -->
+        <script type="text/javascript" src="../js/prototype.js"></script>
+        <script type="text/javascript" src="camSearch.js"></script>
+        <script type="text/javascript" src="../util.js"></script>
+	
+		<!-- <link rel="stylesheet" type="text/css" href="js/yui/combo.css">
+ 		<script type="text/javascript" src="js/yui/combo.js"></script> -->
+ 		
+<!-- Combo-handled YUI CSS files: -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.6.0/build/fonts/fonts-min.css&2.6.0/build/container/assets/skins/sam/container.css&2.6.0/build/paginator/assets/skins/sam/paginator.css&2.6.0/build/datatable/assets/skins/sam/datatable.css">
+<!-- Combo-handled YUI JS files: -->
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo/yahoo-min.js&2.6.0/build/event/event-min.js&2.6.0/build/connection/connection-min.js&2.6.0/build/dom/dom-min.js&2.6.0/build/container/container-min.js&2.6.0/build/datasource/datasource-min.js&2.6.0/build/element/element-beta-min.js&2.6.0/build/paginator/paginator-min.js&2.6.0/build/datatable/datatable-min.js&2.6.0/build/json/json-min.js"></script>
+
+         
+		<link type="text/css" rel="stylesheet" href="google.css">
+        <link type="text/css" rel="stylesheet" href="googleMod.css">
+        <style>
+        
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+
+		#MyPageTableDiv table {
+			border-collapse:collapse; width: 100%;
+		}
+        #MyPageTableDiv .yui-dt-loading {
+        	text-align: center;background-color: transparent;
+		}
+
+#main {
+    background:#9c9;
+    float:left;
+    width:900px;
+    z-index: 10
+    }
+#sidebar {
+    background:#EDF5FF;
+    float:right;
+    width:700px;
+    z-index: -10
+    }
+		
+        </style>
+        
+    </head>
+    
+<body onload = "init()" class="yui-skin-sam" >
+	<input id="inpDomainId" type="hidden" name="domainId" value="1">
+	<input id="inpFieldNames" type="hidden" name="names" value="brand,model,mpix,zoom,price,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="1,2,3,4,5,6">
+	
+	
+<div id="wrap">        
+    <div id="main">
+
+	<p><font size="4">Vertical Search Demo : Camera Domain</font></p>
+	<FORM id="annieForm" ACTION="">
+	<table border="0" width="100%" id="table2">
+		<tr>
+			<td>
+			<table border="1" width="30%" style="border-collapse: collapse" id="table3">
+				<tr>
+					<td><b>Brand</b> </td>
+					<td width="220"><input type="text" id="BRAND" size="41" value="" ></td>
+				</tr>
+				<tr>
+					<td height="26"><b>Model</b> </td>
+					<td height="26" width="220"><input type="text" id="MODEL" size="41" ></td>
+				</tr>
+				<tr>
+					<td><b>Price</b></td>
+					<td width="220">min <input type="text" id="price_min" size="12" onkeyup="updateRange('price')"> max
+					<input type="text" id="price_max" size="12" onkeyup="updateRange('price')">
+					<input type="hidden" id="PRICE" size="12" onkeyup="updateRange('price')">
+					</td>
+					
+				</tr>
+				<tr>
+					<td><b>Megapixel</b></td>
+					<td width="220">min <input type="text" id="mpix_min" size="12" onkeyup="updateRange('mpix')"> max
+					<input type="text" id="mpix_max" size="12" onkeyup="updateRange('mpix')">
+					<input type="hidden" id="MPIX" size="12" onkeyup="updateRange('mpix')">
+				</tr>
+				<tr>
+					<td><b>Zoom</b></td>
+					<td width="220">min <input type="text" id="zoom_min" size="12" onkeyup="updateRange('zoom')"> max
+					<input type="text" id="zoom_max" size="12" onkeyup="updateRange('zoom')">
+					<input type="hidden" id="ZOOM" size="12" onkeyup="updateRange('zoom')">
+				</tr>
+			</table>
+			</td>
+	        <td><div> 
+	                <b>Evaluation for query </b> : <span id="evalQueryId">n/a</span>
+	                <br>
+	                <b>Average Precision</b> : <span id="avgPrecision">n/a</span> 
+	                <br>			
+	                <b>Number of Relevant</b> : <span id="nRelevant">n/a</span>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<p><a href="javascript:loadIndices();">Load Indices</a>
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select>
+		
+<br><a href="javascript:loadQueries();">Load Query</a>
+            <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+            <option value="-1">Select query
+			</option>
+            </select>
+	<p>
+	<input type="button" value="Search" name="search" onclick="submitSearchQuery()">
+    <input type="button" value="Submit Feedback" name="feedback" onclick="submitFeedbackData()">
+
+	<input type="button" value="Rank Relevant Docs Only" name="B2" onclick="submitSearchQueryFromIndex(-1)">
+</p>
+
+	<div id="pag"><!-- pagination controls will go here --></div> 
+	<div id = "MyPageTableDiv" >
+	</div>
+
+	<input type="button" value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()"> 
+		<input type="text" id="txtJumpTo" name="jumpTo" size="12" >
+    <input type="button" value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()">
+</FORM>
+
+<p><textarea id="scratchBox" rows="4" name="S1" cols="80"></textarea></p>
+
+	</div>
+    <div id="sidebar">
+
+ 
+<iframe name="frameWebpage" width="100%" height="800" src="#" >
+	Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+	</div>    
+</div>
+
+</body>
+</html>

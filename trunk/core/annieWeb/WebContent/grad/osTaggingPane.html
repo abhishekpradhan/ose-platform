@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tagging Panel</title>
+<script type="text/javascript" src="../util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="js/osBuilder.js" ></script>
+<script type="text/javascript" src="js/osTaggingPane.js" ></script>
+      
+</head>
+
+<body>
+
+<p>Tags for&nbsp;
+<a id="anchorCurrentPage" target="_blank" href="#">...</a>
+<font size="2">Doc ID : <span id="spanDocId" >??</span>, Score : <span id="spanScore">??</span><a href="#" id="anchorCacheLink" target="_blank">Cache</a></font>
+<br>
+<a id="previousLink" href="#">Previous</a> - 
+<a id="nextLink" href="#">Next</a>
+<br>
+<font size="2">(enter tag and click &quot;Add&quot; one at a time, click on tag to remove)</font>
+
+<form action="" method="">
+	<input id="inpDomainId" type="hidden" name="domainId" value="4">
+	<input id="inpFieldNames" type="hidden" name="names" value="name,univ,area,advi,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="41,42,43,44,45">
+	<input id="inpFieldTypes" type="hidden" name="names" value="keyword,super_keyword,text,super_keyword,other">
+		
+	<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+		
+		<tr>
+			<td>Name</td>
+			<td>
+			<span id="name_span"></span><input id="name_txtTag" type="text" name="name" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('name');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Univ</td>
+			<td>
+			<span id="univ_span"></span><input id="univ_txtTag" type="text" name="univ" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('univ');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Area</td>
+			<td>
+			<span id="area_span"></span><input id="area_txtTag" type="text" name="area" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('area');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Advi</td>
+			<td>
+			<span id="advi_span"></span><input id="advi_txtTag" type="text" name="advi" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('advi');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Other</td>
+			<td>
+			<span id="other_span"></span><input id="other_txtTag" type="text" name="other" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('other');">Last Tags</a>
+			</td>
+		</tr>
+		
+	</table>
+</form>
+<a href="javascript:tagAllResult()">Tag All Result</a> <br>
+<div id="debugDiv"></div>
+
+</body>
+
+</html>

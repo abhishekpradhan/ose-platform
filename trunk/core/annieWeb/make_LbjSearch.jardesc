@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="D:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/core_trunk/annieWeb/WebContent/WEB-INF/lib/LbjSearch.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/annieWeb/make_LbjSearch.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=lbjSearch/lbj"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;testing"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.trainer"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.objectsearch"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.experiments"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.utils"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.runner"/>
+        <javaElement handleIdentifier="=lbjSearch/data&lt;lbjse.objectsearch"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.learn"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.trainer.prof_inde{TrainProfessorName.java"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;python"/>
+        <javaElement handleIdentifier="=lbjSearch/data&lt;lbjse.semlist"/>
+        <javaElement handleIdentifier="=lbjSearch/data&lt;lbjse.eval"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.trainer.prof_inde{TrainProfessorUniv.java"/>
+        <file path="/lbjSearch/data/professor.domain"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.rank.inde{ProfessorRank.java"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.tools"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.domada{PruningFeatureExperiment.java"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.trainer.prof_inde{TrainProfessorDept.java"/>
+        <javaElement handleIdentifier="=lbjSearch/lbjsrc"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.rank"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.search"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.rank.conditional"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;sql"/>
+        <javaElement handleIdentifier="=lbjSearch/conf"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.datacleaning"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.atl"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.features"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.data"/>
+        <javaElement handleIdentifier="=lbjSearch/src&lt;lbjse.semlist"/>
+    </selectedElements>
+</jardesc>

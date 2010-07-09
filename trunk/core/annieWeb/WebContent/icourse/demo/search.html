@@ -1,0 +1,472 @@
+<html>
+	<head>
+		<title>Illinois Course Recommendation & Search Engine</title>		
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        
+        <!-- js file -->
+		<script type="text/javascript" src="prototype.js"></script>
+		<script type="text/javascript" src="util.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+ 		<script type="text/javascript" src="js/combo.js"></script>
+		<script type="text/javascript" src="js/contact.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			jQuery.noConflict();
+			jQuery(document).ready(function(){
+				var isClicked = false;
+				
+				jQuery("#contactBar").click(function(){
+					if(!isClicked){
+						jQuery(".edge").stop().fadeIn();
+						jQuery("#contact,#contactBar").animate({"left" : "+=700px"}, "slow");
+						isClicked = true;
+					}
+					else{
+						jQuery(".edge").stop().fadeOut();
+						jQuery("#contact,#contactBar").animate({"left" : "-=700px"}, "slow");
+						isClicked = false;
+					}
+				});
+				
+				init();
+			});
+		</script>
+		
+		
+<!-- Combo-handled YUI CSS and JS files:
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.6.0/build/fonts/fonts-min.css&2.6.0/build/container/assets/skins/sam/container.css&2.6.0/build/paginator/assets/skins/sam/paginator.css&2.6.0/build/datatable/assets/skins/sam/datatable.css">
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo/yahoo-min.js&2.6.0/build/event/event-min.js&2.6.0/build/connection/connection-min.js&2.6.0/build/dom/dom-min.js&2.6.0/build/container/container-min.js&2.6.0/build/datasource/datasource-min.js&2.6.0/build/element/element-beta-min.js&2.6.0/build/paginator/paginator-min.js&2.6.0/build/datatable/datatable-min.js&2.6.0/build/json/json-min.js"></script>
+-->
+         
+		<!-- <link type="text/css" rel="stylesheet" href="css/google.css" /> -->
+        <link type="text/css" rel="stylesheet" href="css/googleMod.css" />
+        <link type="text/css" rel="stylesheet" href="css/search.css" />
+		<link type="text/css" rel="stylesheet" href="css/firebug.css" />
+		<link rel="stylesheet" type="text/css" href="css/combo.css">
+		
+		<!-- <link type="text/css" rel="stylesheet" href="css/paper.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/html.css" media="screen, projection, tv " />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" media="screen, projection, tv" />
+		<link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+	</head>
+	
+	<body class="yui-skin-sam">
+		<!-- hidden input values -->
+		<input id="inpDomainId" name="domainId" value="6" type="hidden" />
+		<input id="inpFieldNames" name="names" value="name,prof,sem,year,loca,univ,cont,cnum,dept,other" type="hidden" />
+		<input id="inpFieldIds" name="names" value="61,62,63,64,65,66,67,68,69,70" type="hidden" />
+		<input id="inpFieldTypes" name="names" value="super_keyword,super_keyword,keyword,number,super_keyword,super_keyword,text,number,super_keyword,other" type="hidden" /> 
+		
+		<!-- unknown iframe -->
+		<iframe style="border-width: 0pt; position: absolute; visibility: visible; width: 10em; height: 10em; top: -134px; left: -134px;" title="Text Resize Monitor" id="_yuiResizeMonitor">
+		</iframe>
+		
+		<!-- warning sign-->
+		<!--
+		<div style="position: absolute; left: 1080px; top: 300px; max-width: 200px; z-index: 3;"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/48px-Dialog-warning.svg.png" width="50"></div>
+		<div style="position: absolute; left: 1100px; top: 230px; max-width: 200px; z-index: 2; color: black;"><blockquote><p>the search quality is not final yet as we are uploading a new ranking function...</p></blockquote></div>
+		-->
+		
+		<!-- loading -->
+		<!-- left: 397px; top: 210px; -->
+		<div style="margin: auto; width: 240px; z-index: 6;" id="wait_c" class="yui-panel-container shadow">
+			<div style="margin: auto; width: 240px;" class="yui-module yui-overlay yui-panel" id="wait">
+				<div style="cursor: auto;" class="hd">Loading, please wait...</div>
+				<div class="bd"><img src="img/loading.gif" alt="" /></div>
+			</div>
+		</div>
+		
+		<!-- edge effect -->
+		<div class="edge" id="left"></div>
+		<div class="edge" id="right"></div>
+		<div class="edge" id="top"></div>
+		<div class="edge" id="bottom"></div>
+		
+		<!-- contact tab -->
+		<div id="contactBar"></div>
+		<div id="contact">
+			<div style="margin:50px;">
+				<table width="50px" height="50px">
+					<tr>
+						<td>
+							<div class=" width33 floatLeft">
+										<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile5/533/75/n832555222_3053.jpg" /></a>
+										<h4>Penn Su</h4>
+							</div>
+						</td>
+						<td>
+							<div class="floatRight">
+								<h4>University of Illinois: Urbana Champaign</h4>
+								<h4>Sophomore in Computer Science</h4>
+								<h4>Email: pennsu2 at uiuc dot edu</h4>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class=" width33 floatLeft">
+									<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile2/809/40/n1273620385_26790.jpg" /></a>
+									<h4>Abhishek Pradhan</h4>
+						</div>
+						</td>
+						<td>
+						<div class="floatRight">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Sophomore in Computer Science</h4>
+							<h4>Email: apradha2 at uiuc dot edu</h4>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class="floatLeft">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Ph.D Student in Computer Science</h4>
+							<h4>Email: kimpham2 at uiuc dot edu</h4>
+						</div>
+						</td>
+						<td>
+							<div class=" floatRight">
+								<a><img style="max-width: 100px;" src="http://photos-f.ak.fbcdn.net/photos-ak-sf2p/v55/163/34/1954915/s1954915_34441669_6681.jpg " /></a>
+							<h4>Kim Pham</h4>
+						</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div id="wrapper"> 
+			<div id="content">
+				<!-- #menu: topbar menu of the site.  Use the helper classes .two, .three, .four and .five to set
+					the widths for 2, 3, 4 and 5 item menus. -->
+				<ul id="menu" class="four">
+				<li><a href="search.html" title="Search Portal" class="here"><span class="big">S</span>earch</a></li>
+				<li><a href="dev manual.html" title="Developer Manual"><span class="big">D</span>eveloper</a></li>
+				<li><a href="user manual.html" title="User Manual"><span class="big">U</span>ser</a></li>
+				<li><a href="about.html" title="Know Us"><span class="big">A</span>bout</a></li>
+				</ul>
+				<div id="header">
+					<h1>iCourse</h1>
+					<span class="highlight">Illinois Course Recommendation & Search Engine</span>
+				</div>
+				<!-- content -->
+				<div id="page">
+					<div id="searchbar">
+						<!-- <form id="simple">
+							<h1>Search:</h1>
+							<input type="text" size="55" id="simple" value="Search here..." />
+							<input type="button" class="button" name="simple" value="Annie Search" style="margin-left: 185px; margin-top: 2px;" />
+						</form> -->
+						
+						<form id="annieForm" action="">
+						<table id="table2" border="0" width="100%" summary="layout table">
+							<tbody>
+								<tr>
+									<td>
+										<table style="border-collapse: collapse;" id="table3" border="1" width="30%" summary="layout table">
+											<tbody>
+												<tr>
+													<td><h3>Course Title</h3></td>
+													<td><input id="NAME" size="45" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><h3>Instructor</h3> </td>
+													<td width="220"><input id="PROF" size="45" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td>
+														<h3>Semester</h3>
+													</td>
+													<td>
+														<select id="selSem" name="selSem" onchange="selectSemYear()">
+															<option value="">Don't care</option>
+															<option value="fall">Fall</option>
+															<option value="spring">Spring</option>
+															<option value="winter">Winter</option>
+															<option value="summer">summer</option>
+														</select>
+														<input type="hidden" id="SEM" size="41" value="" >
+													 Year
+														<select id="selYear" name="selYear" onchange="selectSemYear()">
+															<option value="">Don't care</option>
+															<option value="_range(1995,1995)">1995</option>
+															<option value="_range(1996,1996)">1996</option>
+															<option value="_range(1997,1997)">1997</option>
+															<option value="_range(1998,1998)">1998</option>
+															<option value="_range(1999,1999)">1999</option>
+															<option value="_range(2000,2000)">2000</option>
+															<option value="_range(2001,2001)">2001</option>
+															<option value="_range(2002,2002)">2002</option>
+															<option value="_range(2003,2003)">2003</option>
+															<option value="_range(2004,2004)">2004</option>
+															<option value="_range(2005,2005)">2005</option>
+															<option value="_range(2006,2006)">2006</option>
+															<option value="_range(2007,2007)">2007</option>
+															<option value="_range(2008,2008)">2008</option>
+															<option value="_range(2009,2009)">2009</option>
+														</select>
+														<input type="hidden" id="YEAR">	
+													</td>				
+												</tr>
+												<tr>
+													<td><h3>University</h3> </td>
+													<td width="220"><input id="UNIV" size="45" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><h3>Content</h3> </td>
+													<td width="220"><input id="CONT" size="45" value="" type="text" /></td>
+												</tr>
+												<input id="DEPT" size="41" value="" type="hidden" />
+												<input id="LOCA" size="41" value="" type="hidden" />
+												<input id="CNUM" size="12" value="" type="hidden" />
+											</tbody>
+										</table>
+									</td>
+									<!--
+									<td>
+										<div> 
+											<strong>Evaluation for query </strong> : <span id="evalQueryId">n/a</span>
+											<br />
+											<strong>Average Precision</strong> : <span id="avgPrecision">n/a</span> 
+											<br />
+											<strong>Number of Relevant</strong> : <span id="nRelevant">n/a</span>
+										</div>
+									</td>
+									-->
+								</tr>
+							</tbody>
+						</table>
+						<p>
+							<input value="Search" id="search" onclick="submitSearchQuery()" name="search" type="button" class="button" />
+							<input value="Submit Feedback" name="feedback" onclick="submitFeedbackData()" type="button" class="button" />
+							<input value="Clear" name="clear" onclick="resetForm()" type="reset" class="button" />
+						</p>
+						<!-- <div id="pag"></div> -->
+						<div class="yui-dt" id="MyPageTableDiv">
+							<div style="display: none;" class="yui-dt-mask"></div>
+								<table summary="">
+									<colgroup>
+										<col />
+										<col />
+										<col />
+										<col />
+										<col />
+									</colgroup>
+									<thead>
+										<tr class="yui-dt-first yui-dt-last">
+											<th class="yui-dt0-col-No yui-dt-col-No yui-dt-sortable yui-dt-first" colspan="1" rowspan="1" id="yui-dt0-th-No">
+												<div class="yui-dt-liner" id="yui-dt0-th-No-liner">
+													<span class="yui-dt-label">
+														<a href="yui-dt0-href-No" title="Click to sort ascending" class="yui-dt-sortable">No</a>
+													</span>
+												</div>
+											</th>
+											<th class="yui-dt0-col-DocId yui-dt-col-DocId yui-dt-sortable" colspan="1" rowspan="1" id="yui-dt0-th-DocId">
+												<div class="yui-dt-liner" id="yui-dt0-th-DocId-liner">
+													<span class="yui-dt-label">
+														<a href="yui-dt0-href-DocId" title="Click to sort ascending" class="yui-dt-sortable">DocID</a>
+													</span>
+												</div>
+											</th>
+											<th class="yui-dt0-col-Score yui-dt-col-Score yui-dt-sortable" colspan="1" rowspan="1" id="yui-dt0-th-Score">
+												<div class="yui-dt-liner" id="yui-dt0-th-Score-liner">
+													<span class="yui-dt-label">
+														<a href="yui-dt0-href-Score" title="Click to sort ascending" class="yui-dt-sortable">Score</a>
+													</span>
+												</div>
+											</th>
+											<th class="yui-dt0-col-Title yui-dt-col-Title" colspan="1" rowspan="1" id="yui-dt0-th-Title">
+												<div class="yui-dt-liner" id="yui-dt0-th-Title-liner">
+													<span class="yui-dt-label">Title</span>
+												</div>
+											</th>
+											<th class="yui-dt0-col-NOEXISTENCE yui-dt-col-NOEXISTENCE yui-dt-last" colspan="1" rowspan="1" id="yui-dt0-th-NOEXISTENCE">
+												<div class="yui-dt-liner" id="yui-dt0-th-NOEXISTENCE-liner">
+													<span class="yui-dt-label">OK?</span>
+												</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody class="yui-dt-message">
+										<tr class="yui-dt-first yui-dt-last">
+											<td class="yui-dt-empty" colspan="5">
+												<div class="yui-dt-liner">No records found.</div>
+											</td>
+										</tr>
+									</tbody>
+									<tbody class="yui-dt-data" tabindex="0">
+									</tbody>
+								</table>
+						</div>
+						<input value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()" type="button" /> 
+						<input id="txtJumpTo" name="jumpTo" size="12" type="text" />
+						<input value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()" type="button" />
+					</form>
+					</div>
+					<!--
+					<p>
+						<!preview iframe>
+						<div>
+							<iframe name="frameWebpage" src="search.htm" frameborder="0" height="800" width="100%">
+								Your browser does not support inline frames or is currently configured not to 
+								display inline frames.
+							</iframe>
+						</div>
+					</p>
+					
+					<br />
+					<div>
+						<div style="float: left;">
+							Index
+							<select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+								<option id="q_1602" value="1602" selected="true">training courses</option>
+							</select>
+						</div>
+						<div style="float: right;">
+							<a href="javascript:loadQueries();">Load Query</a>
+							<select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+								<option value="-1">Select query</option>
+							</select>
+						</div>
+					</div>
+					<br />
+					<br />
+					<form id="annieForm" action="">
+						<table id="table2" border="0" width="100%" summary="layout table">
+							<tbody>
+								<tr>
+									<td>
+										<table style="border-collapse: collapse;" id="table3" border="1" width="30%" summary="layout table">
+											<tbody>
+												<tr>
+													<td><strong>Name</strong> </td>
+													<td width="220"><input id="NAME" size="41" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><strong>Prof</strong> </td>
+													<td width="220"><input id="PROF" size="41" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><strong>Sem</strong> </td>
+													<td width="220"><input id="SEM" size="41" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><strong>Year</strong> </td>
+													<td width="220">min <input id="year_min" size="12" onkeyup="updateRange('year')" type="text" /> max
+														<input id="year_max" size="12" onkeyup="updateRange('year')" type="text" />
+														<input id="YEAR" size="12" onkeyup="updateRange('year')" type="hidden" /> 
+													</td>
+												</tr>
+												<tr>
+													<td><strong>Univ</strong> </td>
+													<td width="220"><input id="UNIV" size="41" value="" type="text" /></td>
+												</tr>
+												<tr>
+													<td><strong>Cont</strong> </td>
+													<td width="220"><input id="CONT" size="41" value="" type="text" /></td>
+												</tr>
+												<input id="DEPT" size="41" value="" type="hidden" />
+												<input id="LOCA" size="41" value="" type="hidden" />
+												<input id="CNUM" size="12" value="" type="hidden" />
+											</tbody>
+										</table>
+									</td>
+									<td>
+										<div> 
+											<strong>Evaluation for query </strong> : <span id="evalQueryId">n/a</span>
+											<br />
+											<strong>Average Precision</strong> : <span id="avgPrecision">n/a</span> 
+											<br />
+											<strong>Number of Relevant</strong> : <span id="nRelevant">n/a</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<p>
+							<input value="Search" name="search" onclick="submitSearchQuery()" type="button" />
+							<input value="Submit Feedback" name="feedback" onclick="submitFeedbackData()" type="button" />
+							<input value="Clear" name="clear" onclick="resetForm()" type="reset" />
+						</p>
+						<div id="pag"><! pagination controls will go here ></div>
+						<div class="yui-dt" id="MyPageTableDiv">
+							<div style="display: none;" class="yui-dt-mask"></div>
+							<table summary="">
+								<colgroup>
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+								</colgroup>
+								<thead>
+									<tr class="yui-dt-first yui-dt-last">
+										<th class="yui-dt0-col-No yui-dt-col-No yui-dt-sortable yui-dt-first" colspan="1" rowspan="1" id="yui-dt0-th-No">
+											<div class="yui-dt-liner" id="yui-dt0-th-No-liner">
+												<span class="yui-dt-label">
+													<a href="yui-dt0-href-No" title="Click to sort ascending" class="yui-dt-sortable">No</a>
+												</span>
+											</div>
+										</th>
+										<th class="yui-dt0-col-DocId yui-dt-col-DocId yui-dt-sortable" colspan="1" rowspan="1" id="yui-dt0-th-DocId">
+											<div class="yui-dt-liner" id="yui-dt0-th-DocId-liner">
+												<span class="yui-dt-label">
+													<a href="yui-dt0-href-DocId" title="Click to sort ascending" class="yui-dt-sortable">DocID</a>
+												</span>
+											</div>
+										</th>
+										<th class="yui-dt0-col-Score yui-dt-col-Score yui-dt-sortable" colspan="1" rowspan="1" id="yui-dt0-th-Score">
+											<div class="yui-dt-liner" id="yui-dt0-th-Score-liner">
+												<span class="yui-dt-label">
+													<a href="yui-dt0-href-Score" title="Click to sort ascending" class="yui-dt-sortable">Score</a>
+												</span>
+											</div>
+										</th>
+										<th class="yui-dt0-col-Title yui-dt-col-Title" colspan="1" rowspan="1" id="yui-dt0-th-Title">
+											<div class="yui-dt-liner" id="yui-dt0-th-Title-liner">
+												<span class="yui-dt-label">Title</span>
+											</div>
+										</th>
+										<th class="yui-dt0-col-NOEXISTENCE yui-dt-col-NOEXISTENCE yui-dt-last" colspan="1" rowspan="1" id="yui-dt0-th-NOEXISTENCE">
+											<div class="yui-dt-liner" id="yui-dt0-th-NOEXISTENCE-liner">
+												<span class="yui-dt-label">OK?</span>
+											</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody class="yui-dt-message">
+									<tr class="yui-dt-first yui-dt-last">
+										<td class="yui-dt-empty" colspan="5">
+											<div class="yui-dt-liner">No records found.</div>
+										</td>
+									</tr>
+								</tbody>
+								<tbody class="yui-dt-data" tabindex="0">
+								</tbody>
+							</table>
+						</div>
+						<input value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()" type="button" /> 
+						<input id="txtJumpTo" name="jumpTo" size="12" type="text" />
+						<input value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()" type="button" />
+					</form>
+					<a href="javascript:showSnippets()">Show Snippets</a>
+					<p>
+						<textarea id="scratchBox" rows="4" name="S1" cols="80">
+						</textarea>
+					</p>
+					<p id="footer">
+						<!preview iframe>
+						<div>
+							<iframe name="frameWebpage" src="search.htm" frameborder="0" height="800" width="100%">
+								Your browser does not support inline frames or is currently configured not to 
+								display inline frames.
+							</iframe>
+						</div>
+					</p> -->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

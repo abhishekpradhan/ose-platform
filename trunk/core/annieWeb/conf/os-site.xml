@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<property>
+    <name>FeatureSearchServlet.indexId</name>
+    <value>7</value>
+    <description>for testing</description>
+
+</property>

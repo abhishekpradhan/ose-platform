@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="annieWeb">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="tomcat" value="${env.TOMCAT_HOME}"/>
+    <property name="TOMCAT_HOME" value="${env.TOMCAT_HOME}"/>
+    <property name="dist"  location="WebContent/WEB-INF"/>
+    <property name="lbjSearch.location" value="../lbjSearch"/>
+    <path id="Web App Libraries.libraryclasspath">
+    	<fileset dir="${basedir}/">
+    		<include name="WebContent/WEB-INF/lib/*.jar"/>
+    	</fileset>
+    </path>
+    <path id="Tomcat.libraryclasspath">
+    	<fileset dir="${tomcat}/">
+    		<include name="common/lib/*.jar"/>
+    	</fileset>
+    </path>
+    <path id="annieWeb.classpath">
+        <pathelement location="build/classes"/>        
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="Tomcat.libraryclasspath"/>
+    </path>
+    <property name="test" refid="Tomcat.libraryclasspath"/>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="conf" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="compile" name="build"/>
+    <target depends="init" name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="annieWeb.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="conf"/>
+            <classpath refid="annieWeb.classpath"/>
+        </javac>
+    </target>
+    <target name="dist" depends="compile"
+          description="generate the distribution" >
+      <!-- Create the distribution directory -->
+      <mkdir dir="${dist}/lib"/>
+      <jar jarfile="${dist}/lib/AnnieWeb.jar" basedir="build/classes"/>
+    </target>
+    <target name="updateJar" description="update AnnieDB.jar, AnnieIndex.jar, AnnieSearch.jar, LbjSearch.jar">
+      <!--
+      <copy todir="${lib}" file="../weka-3.5.6/dist/lib/weka-3.5.6.jar"/>
+      <copy todir="${lib}" file="../lucene-2.3.2/build/lucene-core-2.3.jar"/>
+      -->
+      <copy todir="WebContent/WEB-INF/lib" file="../annieDB/dist/lib/AnnieDB.jar"/>
+      <copy todir="WebContent/WEB-INF/lib" file="../annieIndex/dist/lib/AnnieIndex.jar"/>
+      <copy todir="WebContent/WEB-INF/lib" file="../annieSearch/dist/lib/AnnieSearch.jar"/>
+      <copy todir="WebContent/WEB-INF/lib" file="../lbjSearch/dist/lib/LbjSearch.jar"/>
+    </target>	
+    <path id="allwebdirs">
+       <fileset dir="WebContent" includes="*"/>
+       <dirset dir="WebContent" includes="*"/>
+    </path>
+    <pathconvert pathsep=" " targetos="unix" property="allwebdirs.tosync" refid="allwebdirs">
+    </pathconvert>
+
+    <target name="updateTomcat">
+        <echo message="${allwebdirs.tosync} --> apache"/>
+        <exec executable="rsync">
+                <arg line="-r ${allwebdirs.tosync} /mounts/warbler/disks/0/kimpham2/apache/apache-tomcat-5.5.27/webapps/annieWeb/"/>
+        </exec>
+    </target>
+    <target name="restartTomcat">
+        <echo message="Stoping Tomcat in ${TOMCAT_HOME}"/>
+        <exec executable="${TOMCAT_HOME}/bin/shutdown.sh"/>
+        <echo message="Starting Tomcat in ${TOMCAT_HOME}"/>
+        <exec executable="${TOMCAT_HOME}/bin/startup.sh"/>
+    </target>
+    <target name="test">
+        <echo message="${tomcat}"/>
+        <echo message="${test}"/>
+        <echo message="${allwebdirs.tosync} --> apache"/>
+    </target>
+    <target name="war">
+        <war destfile="${dist}/annieWeb.war" webxml="WebContent/WEB-INF/web.xml">
+        <fileset dir="WebContent"/>
+        <lib dir="WebContent/WEB-INF/lib">
+        <!-- <exclude name="AnnieWeb.jar"/> -->
+        </lib>
+        <classes dir="build/classes"/>
+        <!-- zipfileset dir="src/graphics/images/gifs" prefix="images"/> -->
+        </war>
+    </target>
+    <target description="Build all dependent projects." name="deps">
+        <ant antfile="${lbjSearch.location}/build.xml" inheritAll="false" target="deps"/>
+        <ant antfile="${lbjSearch.location}/build.xml" inheritAll="false" target="dist"/>
+	<ant target="updateJar"/>
+    </target>
+    
+</project>

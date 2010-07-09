@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <title>annieSearch Demo 2 : Camera Search</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        
+        <!-- source file -->
+        <script type="text/javascript" src="../js/prototype.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+        <script type="text/javascript" src="../util.js"></script>
+	
+		<link rel="stylesheet" type="text/css" href="js/yui/combo.css">
+ 		<script type="text/javascript" src="js/yui/combo.js"></script> <!-- -->
+ 		
+<!-- Combo-handled YUI CSS and JS files:
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.6.0/build/fonts/fonts-min.css&2.6.0/build/container/assets/skins/sam/container.css&2.6.0/build/paginator/assets/skins/sam/paginator.css&2.6.0/build/datatable/assets/skins/sam/datatable.css">
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo/yahoo-min.js&2.6.0/build/event/event-min.js&2.6.0/build/connection/connection-min.js&2.6.0/build/dom/dom-min.js&2.6.0/build/container/container-min.js&2.6.0/build/datasource/datasource-min.js&2.6.0/build/element/element-beta-min.js&2.6.0/build/paginator/paginator-min.js&2.6.0/build/datatable/datatable-min.js&2.6.0/build/json/json-min.js"></script>
+-->
+         
+		<link type="text/css" rel="stylesheet" href="css/google.css">
+        <link type="text/css" rel="stylesheet" href="css/googleMod.css">
+        <style>
+        
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+
+		#MyPageTableDiv table {
+			border-collapse:collapse; width: 100%;
+		}
+        #MyPageTableDiv .yui-dt-loading {
+        	text-align: center;background-color: transparent;
+		}
+#main {
+    background:#9c9;
+    float:left;
+    width:900px;
+    z-index: 10
+    }
+#sidebar {
+    background:#EDF5FF;
+    float:right;
+    width:700px;
+    z-index: -10
+    }
+        </style>
+        
+    </head>
+    
+<body onload = "init()" class="yui-skin-sam" >
+	<input id="inpDomainId" type="hidden" name="domainId" value="6">
+	<input id="inpFieldNames" type="hidden" name="names" value="name,prof,sem,year,loca,univ,cont,cnum,dept,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="61,62,63,64,65,66,67,68,69,70">
+	<input id="inpFieldTypes" type="hidden" name="names" value="super_keyword,super_keyword,keyword,number,super_keyword,super_keyword,text,number,super_keyword,other">	
+	
+	
+<div id="wrap">        
+    <div id="main">
+
+	<p><font size="4">AnnieSearch Demo : Course Search  </font></p>
+	<p>Index
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option id="q_602" value="602">training courses</option>
+            <option id="q_1602" value="1602" selected='value'>testing courses</option>
+            </select>
+		
+<br><a href="javascript:loadQueries();">Load Query</a>
+            <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+            <option value="-1">Select query
+			</option>
+            </select>
+    </p>
+<FORM id="annieForm" ACTION="">
+	<table border="0" width="100%" id="table2">
+		<tr>
+			<td>
+			<table border="1" width="30%" style="border-collapse: collapse" id="table3">
+				
+				<tr>
+					<td><b>Course Name</b> </td>
+					
+						<td width="220"><input type="text" id="NAME" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Instructor</b> </td>
+					
+						<td width="220"><input type="text" id="PROF" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Semester</b> </td>
+					<td>
+						<select id="selSem" size="1" name="selSem" onchange="selectSemYear()">
+							<option value="">Don't care</option>
+							<option value="fall">Fall</option>
+							<option value="spring">Spring</option>
+							<option value="winter">Winter</option>
+							<option value="summer">summer</option>
+						</select>
+						<input type="hidden" id="SEM" size="41" value="" >
+					<b>Year</b> 					
+						<select id="selYear" size="1" name="selYear" onchange="selectSemYear()">
+							<option value="">Don't care</option>
+            				<option value="_range(1995,1995)">1995</option>
+            				<option value="_range(1996,1996)">1996</option>
+            				<option value="_range(1997,1997)">1997</option>
+            				<option value="_range(1998,1998)">1998</option>
+            				<option value="_range(1999,1999)">1999</option>
+            				<option value="_range(2000,2000)">2000</option>
+            				<option value="_range(2001,2001)">2001</option>
+            				<option value="_range(2002,2002)">2002</option>
+            				<option value="_range(2003,2003)">2003</option>
+            				<option value="_range(2004,2004)">2004</option>
+            				<option value="_range(2005,2005)">2005</option>
+            				<option value="_range(2006,2006)">2006</option>
+            				<option value="_range(2007,2007)">2007</option>
+            				<option value="_range(2008,2008)">2008</option>
+            				<option value="_range(2009,2009)">2009</option>
+            			</select>
+						<input type="hidden" id="YEAR" size="12">	
+					</td>				
+					
+				</tr>
+								
+				<tr>
+					<td><b>University</b> </td>
+					
+						<td width="220"><input type="text" id="UNIV" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Content</b> </td>
+					
+						<td width="220"><input type="text" id="CONT" size="41" value="" ></td>
+					
+				</tr>
+				<input type="hidden" id="DEPT" size="41" value="">
+				<input type="hidden" id="LOCA" size="41" value="">
+				<input type="hidden" id="CNUM" size="12" value="">
+			</table>
+			</td>
+	        <td><div> 
+	        <!--
+	                <b>Evaluation for query </b> : <span id="evalQueryId">n/a</span>
+	                <br>
+	                <b>Average Precision</b> : <span id="avgPrecision">n/a</span> 
+	                <br>			
+	                <b>Number of Relevant</b> : <span id="nRelevant">n/a</span>
+	         -->
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	<p>
+	<input type="button" value="Search" name="search" onclick="submitSearchQuery()">
+    <input type="button" value="Submit Feedback" name="feedback" onclick="submitFeedbackData()">
+	<input type="reset" value="Clear" name="clear" onclick="resetForm()" >
+</p>
+
+	<div id="pag"><!-- pagination controls will go here --></div> 
+	<div id = "MyPageTableDiv" >
+	</div>
+
+	<input type="button" value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()"> 
+		<input type="text" id="txtJumpTo" name="jumpTo" size="12" >
+    <input type="button" value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()">
+</FORM>
+
+
+
+<!-- 
+<a href="javascript:showSnippets()">Show Snippets</a>
+<p><textarea id="scratchBox" rows="4" name="S1" cols="80"></textarea></p>  -->
+
+	</div>
+    <div id="sidebar">
+
+ 
+<iframe name="frameWebpage" width="100%" height="800" src="#" >
+	Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+	</div>    
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7345119-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Query Form</title>
+<script type="text/javascript" src="../util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="../js/scriptaculous.js" ></script>
+<script type="text/javascript" src="../js/effects.js" ></script>
+<script type="text/javascript" src="../js/Dialog.js" ></script>
+<script type="text/javascript" src="js/osQueryForm.js" ></script>
+
+
+</head>
+
+<body onload="init()">
+
+<form method="POST" action=".">
+	<input id="inpDomainId" type="hidden" name="domainId" value="1">
+	<input id="inpFieldNames" type="hidden" name="names" value="brand,model,mpix,zoom,price,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="1,2,3,4,5,6">
+	
+	<p><font color="#0000FF"><b>Digital Camera Search Builder</b></font></p>
+	<p><a href="javascript:loadIndices();">Load Indices</a>
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select>
+    <br><a href="javascript:loadFeatures();">Load Features</a> 
+       <a target="_blank" href="http://warbler.cs.uiuc.edu:8080/trac/wiki/FeatureLanguage">FeatureLanguage</a>
+    <br><a href="javascript:loadQueries();">Load Query</a>
+            <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+            <option value="-1">Select query
+			</option>
+            </select>
+    </p>
+	<table border="1"  id="table1" height="251">
+		
+		<tr>
+			<td><b>Brand </b> </td>
+			
+				<td><input id="inpField_brand" type="text" name="brand" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_brand" onchange="toggleFeature('brand')">Off</td>
+			<td>
+				<div id="brand_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('brand');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Model </b> </td>
+			
+				<td><input id="inpField_model" type="text" name="model" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_model" onchange="toggleFeature('model')">Off</td>
+			<td>
+				<div id="model_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('model');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Mpix </b> </td>
+			
+				<td><input id="inpField_mpix" type="text" name="mpix" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_mpix" onchange="toggleFeature('mpix')">Off</td>
+			<td>
+				<div id="mpix_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('mpix');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Zoom </b> </td>
+			
+				<td><input id="inpField_zoom" type="text" name="zoom" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_zoom" onchange="toggleFeature('zoom')">Off</td>
+			<td>
+				<div id="zoom_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('zoom');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Price </b> </td>
+			
+				<td><input id="inpField_price" type="text" name="price" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_price" onchange="toggleFeature('price')">Off</td>
+			<td>
+				<div id="price_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('price');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Other </b> </td>
+			
+				<td><input id="inpField_other" type="text" name="other" disable="true" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_other" onchange="toggleFeature('other')">Off</td>
+			<td>
+				<div id="other_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('other');">Add</a>
+			</td>
+		</tr>
+		
+		
+	</table>
+	<p><input type="button" value="Search By Features" name="B1" onclick="searchByFeatures()">
+	<input type="reset" value="Reset" name="B2">
+	<input type="button" value="OSearch" name="B3" onclick="searchLogistic()">
+	</p>
+	<p><a href="javascript:saveFeatures();">Save</a> </p>
+	<p>Feature String</p>
+	<p><textarea id="txtFeatureString" rows="9" name="S1" cols="30"></textarea></p>
+	<p>&nbsp;</p>
+	<div id="dlgProgress" style="display:none">Loading...</div>
+</form>
+
+</body>
+
+</html>

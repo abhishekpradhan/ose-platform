@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+
+  <title>Developer Manual</title>
+
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="fullahead.org" />
+  <meta name="keywords" content="XHTML, CSS, template, FullAhead" />
+  <meta name="description" content="A valid, XHTML 1.0 template" />
+  <meta name="robots" content="index, follow, noarchive" />
+  <meta name="googlebot" content="noarchive" />
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			jQuery.noConflict();
+			jQuery(document).ready(function(){
+				var isClicked = false;
+				
+				jQuery("#contactBar").click(function(){
+					if(!isClicked){
+						jQuery(".edge").stop().fadeIn();
+						jQuery("#contact,#contactBar").animate({"left" : "+=700px"}, "slow");
+						isClicked = true;
+					}
+					else{
+						jQuery(".edge").stop().fadeOut();
+						jQuery("#contact,#contactBar").animate({"left" : "-=700px"}, "slow");
+						isClicked = false;
+					}
+				});
+			});
+		</script>
+  
+  <link rel="stylesheet" type="text/css" href="css/man/html.css" media="screen, projection, tv " />
+  <link rel="stylesheet" type="text/css" href="css/man/layout.css" media="screen, projection, tv" />
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+
+  <!-- Conditional comment to apply opacity fix for IE #content background.
+       Invalid CSS, but can be removed without harming design -->
+  <!--[if gt IE 5]>
+  <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection, tv " />
+  <![endif]-->
+
+</head>
+
+
+<body>
+
+<!-- edge effect -->
+		<div class="edge" id="left"></div>
+		<div class="edge" id="right"></div>
+		<div class="edge" id="top"></div>
+		<div class="edge" id="bottom"></div>
+		
+		<!-- contact tab -->
+		<div id="contactBar"></div>
+		<div id="contact">
+			<div style="margin:50px;">
+				<table width="50px" height="50px">
+					<tr>
+						<td>
+							<div class=" width33 floatLeft">
+										<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile5/533/75/n832555222_3053.jpg" /></a>
+										<h4>Penn Su</h4>
+							</div>
+						</td>
+						<td>
+							<div class="floatRight">
+								<h4>University of Illinois: Urbana Champaign</h4>
+								<h4>Sophomore in Computer Science</h4>
+								<h4>Email: pennsu2 at uiuc dot edu</h4>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class=" width33 floatLeft">
+									<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile2/809/40/n1273620385_26790.jpg" /></a>
+									<h4>Abhishek Pradhan</h4>
+						</div>
+						</td>
+						<td>
+						<div class="floatRight">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Sophomore in Computer Science</h4>
+							<h4>Email: apradha2 at uiuc dot edu</h4>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class="floatLeft">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Ph.D Student in Computer Science</h4>
+							<h4>Email: kimpham2 at uiuc dot edu</h4>
+						</div>
+						</td>
+						<td>
+							<div class=" floatRight">
+								<a><img style="max-width: 100px;" src="http://photos-f.ak.fbcdn.net/photos-ak-sf2p/v55/163/34/1954915/s1954915_34441669_6681.jpg " /></a>
+							<h4>Kim Pham</h4>
+						</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+<!-- #wrapper: centers the content and sets the width -->
+<div id="wrapper">
+
+  <!-- #content: applies the white, dropshadow background -->
+  <div id="content">
+
+<!-- #menu: topbar menu of the site.  Use the helper classes .two, .three, .four and .five to set
+                the widths for 2, 3, 4 and 5 item menus. -->
+    <ul id="menu" class="four">
+      <li><a href="search.html" title="Search Portal"><span class="big">S</span>earch</a></li>
+      <li><a href="dev manual.html" title="Developer Manual" class="here"><span class="big">D</span>eveloper</a></li>
+      <li><a href="user manual.html" title="User Manual"><span class="big">U</span>ser</a></li>
+      <li><a href="about.html" title="Know Us"><span class="big">A</span>bout</a></li>
+    </ul>
+  
+    <!-- #header: holds site title and subtitle -->
+    <div id="header">
+      <h1>Developer Manual</h1>
+	  <span class="highlight">Illinois Course Recommendation & Search Engine</span>
+    </div>
+
+    <!-- #page: holds all page content, as well as footer -->
+    <div id="page">
+
+      <h1>Preface</h1>
+
+      <p>
+        The iCourse software is a server implementable search engine that is designed to aid the user in order to be able easily locate course homepages based on a limited amount of information or keywords. The development and process to run such a piece of software has been simplified in order to able to allow the user to easily train the system into delivering accurate and germane results. The following is a description of the various aspects of collecting data and training the system.
+      </p>
+
+	  <h1>The Formal Process</h1>
+	  
+      <p>
+        The formal process involves our system interfacing seamlessly internally with its several components and with the web as a whole. As such we have we separated into components
+      </p>
+	  
+	  <img src="img/image3181.jpg" width="500px" height="400px" class="floatRight" />
+	  <p class="small alignLeft">
+		The above diagram depicts the  entire system as a whole and previews how a constantly running system would interface with the web.
+	  </p>
+
+      <p>
+			what the individual components should be and what component should be given direct access to the internet and what access the developer must have,  the indexing and crawling stages as such will directly interface with the database and the internet, although in order to ensure consistency in our data mining techniques we have denied access to the developer in order to access this stage. The stage in which the developer steps in is the annotation and machine learning portions of our system that can be customized to meet the needs of developer in order to maintain different datasets. 
+			<i>Example: perhaps a developer from UIUC would like to place a higher importance to pages from UIUC, whereas a developer focusing on instructor homepages rather than course homepages would place an emphasis on those kinds of web pages.</i> In the end what matters most is the customer and as such the system front end interface has been simplified down to what any client would see on any other search homepage.
+      </p>
+
+	  <h1>Indexing and Crawling:</h1>
+	  
+      <p>
+        The indexing and crawling stage uses an automated system that uses an interface called YahooBOSS in order to collect a set of links that direct to a course homepage, using this set of links we use our crawler to go to these individual web pages and gather the data contained on them. Once this is done we convert the information into our database format and hand it over to the annotation stage that requires human intervention at certain times.
+      </p>
+
+	  <img src="img/image298.jpg" width="500px" height="400px" class="floatRight" />
+	  <p class="small alignLeft">
+		The figure above is a detailed description of the method in which we achieve a database format that is readable by our annotation system.
+	  </p>
+	  
+	  <p>
+		A set of keywords are sent to an object wrapper that holds several programs that perform various tasks on the collection and conversion of data from the Yahoo search framework, this allows us to obtain a set of websites that might be relevant to our database. Once the process is done we move on to the final crawling and indexing stage that allows our crawlers to travel to these individual websites and collect information about them. It is as such that we have a set database that can be handed over to an annotation system that can organize and interpret this data.
+	  </p>
+	  
+	  <h1>Annotation:</h1>
+	  <p>
+		The process of annotation is used to provide the system with a basic understanding of what it should be looking for as it indexes these pages, it involves using our developer interface to mark certain features of the webpage with their corresponding fields. A basic scenario would involve marking the instructor name, the course content, university and course number that appear on the corresponding homepage for a course website. There are other fields but these would be left blank as they might not appear, as such the developer needs to go through and annotate a certain number of valid pages in order to provide a base for the machine learning stage of the algorithm.
+	  </p>
+	  
+	  <h1>Machine Learning:</h1>
+	  <p>
+		The machine learning stage is an automated process through which we use a set of algorithms to constantly improve the indexing of our data. As the annotator or user be it human or machine sends queries to our system, we use these queries to create datasets of maximum probable solutions in order  to create an understanding of what seen as the optimal result, as such these optimal results are compared with the results generated by our algorithm allowing the algorithm to modify itself in order to achieve solutions of greater relevancy.
+<br />
+The following illustration is an example specific to what occurs in the iCourse system:
+	  </p>
+	  
+	   <img src="img/image3281.gif" width="500px" height="400px" class="floatRight" />
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
