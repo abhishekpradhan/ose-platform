@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 
+     Contain system specific properties
+-->
+<project basedir="." default="build" name="ose.configuration">
+    <property name="OSE_HOME" value="/mounts/warbler/disks/0/kimpham2/work/kim/bamboo/svn"/>
+</project>

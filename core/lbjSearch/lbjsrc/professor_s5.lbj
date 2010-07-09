@@ -1,0 +1,52 @@
+package lbj.professor;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import LBJ2.classify.*;
+import java.util.*;
+ 
+discrete InBody_area(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("area").toLowerCase();
+	Collection c = dq.getDoc().getTokenizedBody();
+	boolean inBody = false;
+	String [] values = fieldValue.split("\\s+");
+	int i = 0;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (w.equals(values[i])) {
+			i++;
+			if (i == values.length){
+				inBody = true;
+				break;
+			}
+		}
+		else {
+			i = 0;
+		}
+	} 
+	return inBody;
+}
+
+discrete% SurroundingWordsInBody_area(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("area");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-15,5);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+mixed% area_features(DocQueryPair dq) <-
+	 SurroundingWordsInBody_area,	 
+	 InBody_area	 
+	 
+discrete{false, true} area_ranker(DocQueryPair dq) <-
+learn Oracle
+  using area_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

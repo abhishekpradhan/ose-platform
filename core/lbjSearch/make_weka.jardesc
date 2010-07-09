@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/lbjse/lbjSearch/lib/weka-3.4.5.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/lbjSearch/make_weka.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.trees.m5"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.search.global"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.unsupervised.instance"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.ensembleLibraryEditor"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.stemmers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.search.ci"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.search"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.neighboursearch.kdtrees"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.streams"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.misc"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.associations"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.images"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.estimate"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.graphvisualizer"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.functions.neural"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.functions.pace"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.lazy.kstar"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.unsupervised"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.rules"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.visualize.plugins"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.associations.gsp"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.attributeSelection"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.functions.supportVector"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.experiment"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.misc.monotone"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.sql"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.meta.ensembleSelection"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.mi"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.meta"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.mi.supportVector"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.rules.part"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.converters"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.sql.event"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.functions"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan.OPTICS_GUI"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.trees.lmt"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.estimators"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.supervised.instance"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.trees"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan.Databases"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.beans.icons"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.tokenizers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.evaluation"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.unsupervised.attribute"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.matrix"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.datagenerators"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.experiment"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.visualize"/>
+        <file path="/weka-3.5.6/.classpath"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.datagenerators.clusterers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.datagenerators.classifiers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.search.fixed"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.neighboursearch"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.neighboursearch.balltrees"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.graphvisualizer.icons"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.experiment.xml"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.lazy"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.xml"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.arffviewer"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.ensembleLibraryEditor.tree"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.trees.j48"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.supervised.attribute"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan.OPTICS_GUI.Graphics"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.datagenerators.classifiers.regression"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.boundaryvisualizer"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.trees.adtree"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core.neighboursearch.covertrees"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.xml"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.core"/>
+        <file path="/weka-3.5.6/.project"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.associations.tertius"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan.Utils"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.bayes.net.search.local"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.filters.supervised"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.clusterers.forOPTICSAndDBScan.DataObjects"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.beans.xml"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.datagenerators.classifiers.classification"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.beans"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.explorer"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.gui.treevisualizer"/>
+        <javaElement handleIdentifier="=weka-3.5.6/src&lt;weka.classifiers.meta.nestedDichotomies"/>
+    </selectedElements>
+</jardesc>

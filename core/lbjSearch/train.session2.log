@@ -1,0 +1,48 @@
+Buildfile: build.xml
+
+LBJ train session:
+     [java] DBManager Initialized with parameters : 
+     [java] Connection : jdbc:mysql://localhost:3306/objectsearch
+     [java] Username : objectsearch
+     [java] Password : objectsearch
+     [java] TrainingSession : Initializing with LbjseTrainingSession(2,8,professor_dept,lbj.professor.pairwise.dept_ranker,lbj.professor.dept_features,null)
+     [java] Number of queries 2
+     [java] Total docs : 1284
+     [java] Target docs : 49
+     [java] Num training docs : 38
+     [java] Num testing docs : 11
+     [java] Q1 : 8,30
+     [java] 	 post sample, #neg = 21
+     [java] Q2 : 38,0
+     [java] Total pairs 168
+     [java] Q1 : 0,11
+     [java] 	 post sample, #neg = 0
+     [java] Q2 : 11,0
+     [java] Total pairs 0
+     [java] .....
+     [java] Total 168 examples trained.
+     [java]  Label   Precision Recall    F1   LCount PCount
+     [java] -----------------------------------------------
+     [java] false       97.753 100.000 98.864     87     89
+     [java] true       100.000  97.531 98.750     81     79
+     [java] -----------------------------------------------
+     [java] Accuracy    98.810    -      -      -       168
+     [java] Accuracy : 0.9880952380952381
+     [java]  Label   Precision Recall F1 LCount PCount
+     [java] ------------------------------------------
+     [java] ------------------------------------------
+     [java] Accuracy     0.000   -    -    -         0
+     [java] Accuracy : NaN
+     [java]  Label   Precision Recall   F1   LCount PCount
+     [java] ----------------------------------------------
+     [java] false       99.108 62.203 76.433   2143   1345
+     [java] true        33.769 97.176 50.121    425   1223
+     [java] ----------------------------------------------
+     [java] Accuracy    67.991   -      -      -      2568
+     [java] Accuracy : 0.6799065420560748
+     [java] Profiling result
+     [java] Profile runtime --> 96074 milliseconds
+     [java] ----------------
+
+BUILD SUCCESSFUL
+Total time: 1 minute 37 seconds

@@ -1,0 +1,201 @@
+package lbjse.objectsearch.lbj;
+import lbjse.objectsearch.*;
+import java.util.*;
+
+discrete{false, true} Oracle(DocQueryPair dq) <-
+{
+  return dq.oracle();
+}
+
+
+discrete{false, true} brand_InTitle(DocQueryPair dq) <-
+{
+	return Utils.contains(dq.getDoc().getTitle(), dq.getQuery().getFieldValue("brand"));
+}  
+
+discrete% brand_specific_canon(DocQueryPair dq) <-
+{
+	if (dq.getQuery().getFieldValue("brand").equals("canon")){
+		sense "canon_brand_" + Utils.contains(dq.getDoc().getTitle(), dq.getQuery().getFieldValue("brand"));
+		Collection c = dq.getDoc().getTokenizedBody();
+		for (Iterator it = c.iterator(); it.hasNext(); )
+			sense "canon_wit_" + it.next();
+	}
+}
+
+discrete{false, true} model_OneInTitle(DocQueryPair dq) <-
+{
+	return Utils.containsSome(dq.getDoc().getTitle(), dq.getQuery().getFieldValue("model").split("\\s+"));
+}  
+
+discrete% mpix_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	String bodyText = dq.getDoc().getBody();
+	String fieldValue = dq.getQuery().getFieldValue("mpix");
+	LinkedVector features = Utils.getSurroundingFeatures(bodyText, fieldValue,-2,2);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}
+	
+}  
+
+discrete% zoom_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	String bodyText = dq.getDoc().getBody();
+	String fieldValue = dq.getQuery().getFieldValue("zoom");
+	LinkedVector features = Utils.getSurroundingFeatures(bodyText, fieldValue,-2,2);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}
+	
+}  
+
+discrete% price_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	String bodyText = dq.getDoc().getBody();
+	String fieldValue = dq.getQuery().getFieldValue("price");
+	LinkedVector features = Utils.getSurroundingFeatures(bodyText, fieldValue,-2,2);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}
+	
+}  
+
+discrete% WordsInTitle(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle();
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense it.next(); 
+}  
+
+discrete% WordsInBody(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense it.next(); 
+}  
+
+discrete% WordsInTitleInLists(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle();
+
+	for (Iterator it = c.iterator(); it.hasNext(); )
+  {
+    String word = (String) it.next();
+    LinkedList lists = ListMembership.containedIn(word);
+    if (lists.size() == 0) sense "No" : word;
+    for (Iterator I = lists.iterator(); I.hasNext(); )
+      sense "" : I.next();
+  }
+}  
+
+discrete% WordsInBodyInLists(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+
+	for (Iterator it = c.iterator(); it.hasNext(); )
+  {
+    String word = (String) it.next();
+    LinkedList lists = ListMembership.containedIn(word);
+    if (lists.size() == 0) sense "No" : word;
+    for (Iterator I = lists.iterator(); I.hasNext(); )
+      sense "" : I.next();
+  }
+}  
+
+
+
+mixed% brand_features(DocQueryPair dq) <-
+	 brand_InTitle, WordsInTitle, brand_specific_canon
+	
+
+mixed% model_features(DocQueryPair dq) <-
+	 model_OneInTitle 
+	
+
+mixed% mpix_features(DocQueryPair dq) <-
+	 mpix_SurroundingWordInBody 
+	
+
+mixed% zoom_features(DocQueryPair dq) <-
+	 zoom_SurroundingWordInBody 
+	
+
+mixed% price_features(DocQueryPair dq) <-
+	 price_SurroundingWordInBody 
+	
+
+mixed% other_features(DocQueryPair dq) <-
+	 WordsInTitle, 
+	 WordsInBody 
+	
+
+
+
+discrete{false, true} brand_ranker(DocQueryPair dq) <-
+learn Oracle
+  using brand_features
+  //from new DocQueryPairParser("training_brand.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+
+
+discrete{false, true} model_ranker(DocQueryPair dq) <-
+learn Oracle
+  using model_features
+  //from new DocQueryPairParser("training_model.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+
+discrete{false, true} mpix_ranker(DocQueryPair dq) <-
+learn Oracle
+  using mpix_features
+  //from new DocQueryPairParser("training_mpix.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+
+discrete{false, true} zoom_ranker(DocQueryPair dq) <-
+learn Oracle
+  using zoom_features
+  //from new DocQueryPairParser("training_zoom.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+
+discrete{false, true} price_ranker(DocQueryPair dq) <-
+learn Oracle
+  using price_features
+  //from new DocQueryPairParser("training_price.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+
+discrete{false, true} other_ranker(DocQueryPair dq) <-
+learn Oracle
+  using other_features
+  //from new DocQueryPairParser("training_other.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+

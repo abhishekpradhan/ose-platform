@@ -1,0 +1,88 @@
+package lbj.professor;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import LBJ2.classify.*;
+import java.util.*;
+ 
+discrete InTitle_name(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("name").toLowerCase();
+	Collection c = dq.getDoc().getTokenizedTitle();
+	boolean inTitle = false;
+	String [] values = fieldValue.split("\\s+");
+	int i = 0;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (w.equals(values[i])) {
+			i++;
+			if (i == values.length){
+				inTitle = true;
+				break;
+			}
+		}
+		else {
+			i = 0;
+		}
+	} 
+	return inTitle;
+}
+
+discrete InBody_name(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("name").toLowerCase();
+	Collection c = dq.getDoc().getTokenizedBody();
+	boolean inBody = false;
+	String [] values = fieldValue.split("\\s+");
+	int i = 0;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (w.equals(values[i])) {
+			i++;
+			if (i == values.length){
+				inBody = true;
+				break;
+			}
+		}
+		else {
+			i = 0;
+		}
+	} 
+	return inBody;
+}
+
+discrete% SurroundingWordsInBody_name(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("name");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-5,5);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+discrete% SurroundingWordsInTitle_name(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedTitle() );
+	String fieldValue = dq.getQuery().getFieldValue("name");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-3,3);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+
+mixed% name_features(DocQueryPair dq) <-
+	 SurroundingWordsInBody_name,
+	 InTitle_name,
+	 InBody_name,
+	 SurroundingWordsInTitle_name
+	 
+discrete{false, true} name_ranker(DocQueryPair dq) <-
+learn Oracle
+  using name_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

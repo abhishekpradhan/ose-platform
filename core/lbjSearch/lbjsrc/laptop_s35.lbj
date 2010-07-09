@@ -1,0 +1,18 @@
+package lbj.laptop;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import LBJ2.classify.*;
+
+mixed% other_features(DocQueryPair dq) <-
+	 WordsInTitle_InDict,
+	 WordsInBody_InDict	 
+	 
+discrete{false, true} other_ranker(DocQueryPair dq) <-
+learn Oracle
+  using other_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

@@ -1,0 +1,44 @@
+package lbj.laptop;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import java.util.*;
+import LBJ2.nlp.*;
+import LBJ2.classify.*;
+
+discrete NumberInBody_price(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("price");
+	Collection c = dq.getDoc().getTokenizedBody();
+	boolean inBody = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (Utils.satisfyConstraint(new Word(w), fieldValue)){ 
+			inBody = true;
+			break;
+		}
+	}
+	return inBody;
+}
+
+discrete% NumericSurroundingWordsInBody_price(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("price");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-5,1);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+mixed% price_features(DocQueryPair dq) <-	 
+	 NumericSurroundingWordsInBody_price
+	 
+discrete{false, true} price_ranker(DocQueryPair dq) <-
+learn Oracle
+  using price_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

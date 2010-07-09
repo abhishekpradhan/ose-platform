@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/lbjse/lbjSearch/lib/lucene-2.3.2.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/lbjSearch/make_luceneJar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/lucene-2.3.2/lucene-contrib-pom.xml.template"/>
+        <file path="/lucene-2.3.2/lucene-demos-pom.xml.template"/>
+        <file path="/lucene-2.3.2/LICENSE.txt"/>
+        <file path="/lucene-2.3.2/.classpath"/>
+        <file path="/lucene-2.3.2/.project"/>
+        <file path="/lucene-2.3.2/NOTICE.txt"/>
+        <file path="/lucene-2.3.2/README.txt"/>
+        <javaElement handleIdentifier="=lucene-2.3.2/src\/java"/>
+        <file path="/lucene-2.3.2/CHANGES.txt"/>
+        <file path="/lucene-2.3.2/lucene-parent-pom.xml.template"/>
+        <file path="/lucene-2.3.2/build.xml"/>
+        <file path="/lucene-2.3.2/BUILD.txt"/>
+        <file path="/lucene-2.3.2/common-build.xml"/>
+        <file path="/lucene-2.3.2/lucene-core-pom.xml.template"/>
+    </selectedElements>
+</jardesc>

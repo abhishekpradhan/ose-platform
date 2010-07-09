@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="test" name="lbjSearch.exptasks">
+	<import file="build.xml"/>
+	<import file="runtasks.xml"/>
+	<target name="test">
+        <echo>${classpath}</echo>
+    </target>
+    <target name="tmp">
+        <property name="mode" value="pointwise"/>
+        <property name="trec" value="working/laptop_20003.tagtrec"/>
+        <ant target="map evaluator">
+            <property name="session" value="31"/>
+            <property name="query" value="working/brand.txt"/>
+        </ant>
+    </target>
+    <target name="eval laptop">
+        <ant target="lbjsearch experiment">
+            <property name="tagtrec" value="working/laptop_301.tagtrec"/>
+            <property name="index" value="301"/>
+            <property name="output" value="working/lbjsearchexperiment/rresult"/>
+            <property name="from" value="3001"/>
+            <property name="to" value="3010"/>
+        </ant>
+    </target>
+    <target name="train laptop">
+        <property name="trec" value="working/laptop_301.tagtrec"/>
+        <property name="extra" value="--forget"/>
+        <ant target="train concrete">
+            <property name="session" value="31"/>
+            <property name="nrounds" value="1"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="32"/>
+            <property name="nrounds" value="1"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="33"/>
+            <property name="nrounds" value="1"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="35"/>
+            <property name="nrounds" value="5"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="36"/>
+            <property name="nrounds" value="1"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="37"/>
+            <property name="nrounds" value="1"/>
+        </ant>
+    </target>
+
+    <target name="test laptop">
+        <property name="mode" value="pointwise"/>
+        <property name="trec" value="working/laptop_20003.tagtrec"/>
+        <ant target="map evaluator">
+            <property name="session" value="31"/>
+            <property name="query" value="working/brand.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="32"/>
+            <property name="query" value="working/moni.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="33"/>
+            <property name="query" value="working/price.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="35"/>
+            <property name="query" value="working/other.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="36"/>
+            <property name="query" value="working/hdd.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="37"/>
+            <property name="query" value="working/proc.txt"/>
+        </ant>
+    </target>
+    <target name="train professor">
+		<property name="trec" value="working/professor_30002.tagtrec"/>
+		<property name="extra" value="--forget"/>
+        <ant target="train concrete">
+            <property name="session" value="1"/>
+            <property name="nrounds" value="10"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="2"/>
+            <property name="nrounds" value="2"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="3"/>
+            <property name="nrounds" value="2"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="4"/>
+            <property name="nrounds" value="2"/>
+        </ant>
+        <ant target="train concrete">
+            <property name="session" value="5"/>
+            <property name="nrounds" value="2"/>
+        </ant>
+    </target>
+
+    <target name="test professor">
+        <property name="mode" value="pointwise"/>
+        <property name="trec" value="working/professor_30002.tagtrec"/>
+        <ant target="map evaluator">
+            <property name="session" value="1"/>
+            <property name="query" value="working/other.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="2"/>
+            <property name="query" value="working/dept.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="3"/>
+            <property name="query" value="working/univ.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="4"/>
+            <property name="query" value="working/name.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="5"/>
+            <property name="query" value="working/area.txt"/>
+        </ant>
+    </target>
+    <target name="eval professor">
+        <ant target="lbjsearch experiment">
+            <property name="tagtrec" value="working/professor_20004.tagtrec"/>
+            <property name="index" value="20004"/>
+            <property name="output" value="working/lbjsearchexperiment/rresult"/>
+            <property name="from" value="2001"/>
+            <property name="to" value="2010"/>
+        </ant>
+    </target>
+    <target name="train professor pairwise">
+        <property name="trec" value="working/professor_30000.tagtrec.dedup"/>
+        <ant target="train pair concrete session">
+            <property name="session" value="210"/>
+            <property name="nrounds" value="2"/>
+            <property name="extra" value="--maxPPQ 10000 --forget"/>
+        </ant>
+        <ant target="train pair concrete session">
+            <property name="session" value="220"/>
+            <property name="nrounds" value="10"/>
+            <property name="extra" value="--maxPPQ 1000 --forget"/>
+        </ant>
+        <ant target="train pair concrete session">
+            <property name="session" value="230"/>
+            <property name="nrounds" value="2"/>
+            <property name="extra" value="--maxPPQ 1000 --forget"/>
+        </ant>
+        <ant target="train pair concrete session">
+            <property name="session" value="240"/>
+            <property name="nrounds" value="2"/>
+            <property name="extra" value="--maxPPQ 1000 --forget"/>
+        </ant>
+        <ant target="train pair concrete session">
+            <property name="session" value="250"/>
+            <property name="nrounds" value="2"/>
+            <property name="extra" value="--maxPPQ 1000 --forget"/>
+        </ant>
+    </target>
+    <target name="test professor pairwise">
+        <property name="mode" value="pairwise"/>
+        <property name="trec" value="working/professor_30000.tagtrec.dedup"/>
+        <ant target="map evaluator">
+            <property name="session" value="210"/>
+            <property name="query" value="working/other.txt"/>
+        </ant>
+        <ant target="map evaluator">
+            <property name="session" value="220"/>
+    		<property name="query" value="working/dept.txt"/>
+    	</ant>
+	    <ant target="map evaluator">
+        	<property name="session" value="230"/>
+    		<property name="query" value="working/univ.txt"/>
+    	</ant>
+    	<ant target="map evaluator">
+    		<property name="session" value="240"/>
+    		<property name="query" value="working/name.txt"/>
+    	</ant>
+	    <ant target="map evaluator">
+    		<property name="session" value="250"/>
+    		<property name="query" value="working/area.txt"/>
+    	</ant>
+    </target>
+</project>

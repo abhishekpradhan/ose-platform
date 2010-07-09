@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="test" name="lbjSearch.runtasks">
+	<import file="build.xml"/>
+	<import file="../annieSearch/runtasks.xml"/>
+	<target name="test">
+        <echo>${classpath}</echo>
+    </target>
+	<target name="learn homepages">
+        <java classname="lbjse.domada.LearnHomepages" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="adhoc">
+        <java classname="lbjse.tools.RunRanker" failonerror="true" fork="yes">
+		<arg line="--ranker cond --mode rankAll --trec prof_test.trec --query 675 --index 30000 --result C:/working/lbjSearch/cond_borda/675.ranked_result --doc 39397 --agg borda"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="filter">
+        <java classname="lbjse.tools.FilterDocumentByTagValues" failonerror="true" fork="yes">
+		<arg line="--trec combine_prof.trec --field dept --tags filterDept.txt --output filtered.trec"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="profRank.cond">
+        <java classname="lbjse.tools.RunRanker" failonerror="true" fork="yes">
+            <arg line="--ranker cond --mode rankBatch --result C:/working/lbjSearch/cond --index 30000 --trec prof_test.trec --fromQuery 671 --toQuery 677 --agg multiply"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="profRank.inde">
+        <java classname="lbjse.tools.RunRanker" failonerror="true" fork="yes">
+		<arg line="--ranker inde --mode rankBatch --result C:/working/lbjSearch/inde --index 30000 --trec prof_train.trec --fromQuery 661 --toQuery 670"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="PruneSemList">
+        <java classname="lbjse.semlist.PruneSemList" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="PruningFeatureExperiment">
+        <java classname="lbjse.domada.PruningFeatureExperiment" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="ShowFeatures">
+        <java classname="lbjse.tools.ShowFeatures" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="ShowFeaturesPerDocument">
+        <java classname="lbjse.tools.ShowFeaturesPerDocument" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="ShowLearner">
+        <java classname="lbjse.tools.ShowLearner" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="ShowTagValuesForField">
+        <java classname="lbjse.trainer.ShowTagValuesForField" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="SplitTrecFile">
+        <java classname="lbjse.domada.SplitTrecFile" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainOneBrandTestAnother">
+        <java classname="lbjse.domada.TrainOneBrandTestAnother" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainOneBrandTestAnotherTargetProductPages">
+        <java classname="lbjse.domada.TrainOneBrandTestAnotherTargetProductPages" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainOneDepartmentTestAnother">
+        <java classname="lbjse.domada.TrainOneDepartmentTestAnother" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainOnOneDept">
+        <java classname="lbjse.domada.TrainOnOneDept" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="-sourcepath src -gsp lbjsrc -d build/classes  lbjsrc/professor.lbj"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainOnTwoTestOnAnother">
+        <java classname="lbjse.domada.TrainOnTwoTestOnAnother" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainProfessorUniv">
+        <java classname="lbjse.trainer.FieldRankingTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="--trec ${trec} --valueList ${value} --field univ --ranker ${ranker} --forget --nrounds ${nrounds}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainProfessorDept">
+        <java classname="lbjse.trainer.FieldRankingTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="--trec ${trec} --valueList ${value} --field dept --ranker ${ranker} --forget --nrounds ${nrounds}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="TrainProfessorOther">
+        <java classname="lbjse.trainer.FieldRankingTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="--trec ${trec} --valueList other.txt  --field other --ranker cond --forget --nrounds 20" />
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="lbj trec merger">
+        <java classname="lbjse.data.LBJTrecMerger" failonerror="true" fork="yes">
+            <arg line="--first C:\working\lbjSearch\lbj.trec --second C:\working\lbjSearch\oldTrec.trec"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="query generator">
+        <java classname="lbjse.trainer.QueryGenerator" failonerror="true" fork="yes">
+            <arg line="-mode:singlew -fields:dept,univ -count:200 -valUNIV:data/lbjse/trainer/univ_test.txt  -valDEPT:data/lbjse/trainer/dept_test.txt -data:prof_test.trec"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="add query">
+        <java classname="lbjse.tools.AddQueryToDatabase" failonerror="true" fork="yes">
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="exec">
+	    <java classname="${class}" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="${args}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="index stats">
+	    <java classname="ose.index.tool.ShowIndex" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--mode showStats --index ${index}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+    <target name="google to rresult">
+	    <java classname="lbjse.experiments.GoogleResultToRankedResult" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--fromQuery ${from} --toQuery ${to} --prefix ${inputPrefix}  --index ${index} --outputPrefix ${outputPrefix} --topK ${topK}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+	
+    <target name="rresult to html">
+	    <java classname="lbjse.tools.RankedResultToHtml" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--mode pageviewer --rresult ${rresult} --html ${OSE_HOME}/osBuilder/django/static/output.html --indexId ${index} --domain ${domain}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+	
+    <target name="export tagurl">
+	    <java classname="lbjse.tools.ExtractTagurlFromTaggedTrec" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--tagtrec ${tagtrec} --tagurl ${tagurl}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="tag sanity">
+	    <java classname="lbjse.datacleaning.TagSanityCheck" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--trec ${tagtrec} --domainId ${domain} --indexId ${index} --output ${output}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="update rresult">
+	    <java classname="lbjse.tools.UpdateRankedResultOracle" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--rresult ${rresult} --trec ${tagtrec} --queryId ${query}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="lbjsearch experiment">
+	    <java classname="lbjse.experiments.LbjSearchExperiment" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--trec ${tagtrec} --fromQuery ${from} --toQuery ${to} --index ${index} --output ${output} ${extra}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="evaluate rresult">
+	    <java classname="lbjse.experiments.ResultMeasure" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--opt map --rresult ${rresult}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="map evaluator">
+	    <java classname="lbjse.rank.MAPEvaluator" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--mode ${mode} --trec ${trec} --query ${query} --session ${session}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="train concrete">
+	    <java classname="lbjse.learn.LearnFromConcreteFeatures" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt train --sessionId ${session} --trec ${trec} --nrounds ${nrounds} ${extra}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="test concrete">
+	    <java classname="lbjse.learn.LearnFromConcreteFeatures" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt test --sessionId ${session} --trec ${trec}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="train all">
+	    <java classname="lbjse.learn.LearnFromAllFeatures" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt train --sessionId ${session} --trec ${trec} --nrounds ${nrounds} ${extra}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="train pair concrete session">
+	    <java classname="lbjse.learn.SessionPairConcreteTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt train --sessionId ${session} --trec ${trec} --nrounds ${nrounds} ${extra}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="train pair session">
+	    <java classname="lbjse.learn.SessionPairTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt train --sessionId ${session} --trec ${trec} --nrounds ${nrounds} ${extra}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="test pair session">
+	    <java classname="lbjse.learn.SessionPairTrainer" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--opt test --sessionId ${session} --trec ${trec}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="rank features">
+	    <java classname="lbjse.features.ID3Ranker" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <arg line="--sessionId ${session} --dataId ${data} --featureFile ${WORKING_DIR}\features\ranked_features.txt --jsonFile ${WORKING_DIR}\features\ranked_features.json"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+    <target name="pair ranker">
+	    <java classname="lbjse.rank.PairwiseRank" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx512m"/>
+	    <arg line="--sessionId ${session} --data ${trec} --query ${query} --output D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\osBuilder\django\static\output.html --index ${index}"/>
+            <classpath refid="lbjSearch.classpath"/>
+        </java>
+    </target>
+
+
+</project>

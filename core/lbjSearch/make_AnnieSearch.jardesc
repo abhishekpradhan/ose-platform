@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/lbjse/lbjSearch/lib/AnnieSearch.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/lbjSearch/make_AnnieSearch.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Symbol.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenStringSource.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SymbolNode.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{QuoteState.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.utensil"/>
+        <javaElement handleIdentifier="=annieSearch/resources"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Word.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse"/>
+        <file path="/annieSearch/StANNIE_1.HTML"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Literal.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenAssembly.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenString.java"/>
+        <javaElement handleIdentifier="=annieSearch/src"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenTester.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Tokenizer.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{WhitespaceState.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{CaselessLiteral.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SymbolState.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SlashSlashState.java"/>
+        <file path="/annieSearch/.classpath"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{QuotedString.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenType.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SlashState.java"/>
+        <file path="/annieSearch/overview.html"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Num.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SlashStarState.java"/>
+        <javaElement handleIdentifier="=annieSearch/weka_data"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{TokenizerState.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{NumberState.java"/>
+        <javaElement handleIdentifier="=annieSearch/conf"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{Token.java"/>
+        <folder path="/annieSearch/arff"/>
+        <file path="/annieSearch/.project"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.chars"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{SymbolRootNode.java"/>
+        <javaElement handleIdentifier="=annieSearch/thirdParty&lt;sjm.parse.tokens{WordState.java"/>
+    </selectedElements>
+</jardesc>

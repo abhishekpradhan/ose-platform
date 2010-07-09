@@ -1,0 +1,84 @@
+package lbj.laptop;
+import ose.parser.RangeFunctionHandler;
+import ose.processor.cascader.RangeConstraint;
+
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import java.util.*;
+import LBJ2.nlp.*;
+import LBJ2.classify.*;
+
+discrete NumberInTitle_proc(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("proc");
+	Collection c = dq.getDoc().getTokenizedTitle();
+	RangeConstraint rc = RangeFunctionHandler.parse(fieldValue);
+	boolean inTitle = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (rc.satisfy(w)){ 
+			inTitle = true;
+			break;
+		}
+	}
+	return inTitle;
+}
+
+discrete NumberInBody_proc(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("proc");
+	Collection c = dq.getDoc().getTokenizedBody();
+	RangeConstraint rc = RangeFunctionHandler.parse(fieldValue);
+	boolean inBody= false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (rc.satisfy(w)){ 
+			inBody = true;
+			break;
+		}
+	}
+	return inBody;
+}
+
+discrete% NumericSurroundingWordsInTitle_proc(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedTitle = Utils.convertToLinkedVector( dq.getDoc().getTokenizedTitle() );
+	String fieldValue = dq.getQuery().getFieldValue("proc");
+  	RangeConstraint rc = RangeFunctionHandler.parse(fieldValue);
+
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedTitle, fieldValue, rc, -1, 1);
+
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}
+}
+
+discrete% NumericSurroundingWordsInBody_proc(DocQueryPair dq) <-
+{
+	
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("proc");
+  	RangeConstraint rc = RangeFunctionHandler.parse(fieldValue);
+
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue, rc, -2, 2);
+
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+mixed% proc_features(DocQueryPair dq) <-
+	 NumericSurroundingWordsInTitle_proc,	 
+	 NumericSurroundingWordsInBody_proc,
+	 NumberInTitle_proc,
+	 NumberInBody_proc
+	 
+discrete{false, true} proc_ranker(DocQueryPair dq) <-
+learn Oracle
+  using proc_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+

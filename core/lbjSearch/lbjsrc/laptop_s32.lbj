@@ -1,0 +1,45 @@
+package lbj.laptop;
+import lbjse.objectsearch.*;
+import lbj.common.*;
+import java.util.*;
+import LBJ2.nlp.*;
+import LBJ2.classify.*;
+
+discrete NumberInTitle_moni(DocQueryPair dq) <-
+{
+	String fieldValue = dq.getQuery().getFieldValue("moni");
+	Collection c = dq.getDoc().getTokenizedTitle();
+	boolean inTitle = false;
+	for (Iterator it = c.iterator(); it.hasNext(); ){
+		String w = ((String) it.next()).toLowerCase();
+		if (Utils.satisfyConstraint(new Word(w), fieldValue)){ 
+			inTitle = true;
+			break;
+		}
+	}
+	return inTitle;
+}
+
+discrete% NumericSurroundingWordsInBody_moni(DocQueryPair dq) <-
+{
+	LinkedVector tokenizedBody = Utils.convertToLinkedVector( dq.getDoc().getTokenizedBody() );
+	String fieldValue = dq.getQuery().getFieldValue("moni");
+	LinkedVector features = Utils.getSurroundingFeatures(tokenizedBody, fieldValue,-5,5);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense "" : pair.getWord();
+	}	
+}
+
+mixed% moni_features(DocQueryPair dq) <-
+	 NumberInTitle_moni,
+	 NumericSurroundingWordsInBody_moni
+	 
+discrete{false, true} moni_ranker(DocQueryPair dq) <-
+learn Oracle
+  using moni_features
+  with new SparseAveragedPerceptron(1.0, 0, 2) 
+  preExtract true
+  
+  cval 5 "random"
+end
+
