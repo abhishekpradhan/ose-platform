@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+	<title>Active objectsearch builder</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<link type="text/css" rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="../util.js" ></script>
+	<script type="text/javascript" src="alearner.js" ></script>
+	<script type="text/javascript" src="../js/prototype.js" ></script>
+	<script type="text/javascript" src="../js/effects.js" ></script>
+	<script type="text/javascript" src="../js/Dialog.js" ></script>
+	
+	<link rel="stylesheet" type="text/css" href="js/yui/combo.css">
+ 	<script type="text/javascript" src="js/yui/combo.js"></script> 
+
+	<style media="screen" type="text/css">
+	/* custom styles for this example */
+	.yui-skin-sam .yui-dt-liner { white-space:nowrap; } 
+
+	/* <!-- */
+	/* 'widths' sub menu */
+	#layoutdims {
+		clear:both;
+		background:#eee;
+		border-top:4px solid #000;
+		margin:0;
+		padding:6px 15px !important;
+		text-align:right;
+	}
+	/* column container */
+	.colmask {
+		position:relative;		/* This fixes the IE7 overflow hidden bug */
+		clear:both;
+		float:left;
+		width:100%;				/* width of whole page */
+		overflow:hidden;			/* This chops off any overhanging divs */
+	}
+	/* common column settings */
+	.colright,
+	.colmid,
+	.colleft {
+		float:left;
+		width:100%;				/* width of page */
+		position:relative;
+	}
+	.col1,
+	.col2,
+	.col3 {
+		float:left;
+		position:relative;
+		padding:0 0 1em 0;		/* no left and right padding on columns, we just make them narrower instead 
+							only padding top and bottom is included here, make it whatever value you need */
+		overflow:hidden;
+	}
+	/* 3 Column blog style settings */
+	.blogstyle {
+		background:#eee;			/* right column background colour */
+	}
+	.blogstyle .colmid {
+		right:25%;				/* width of the right column */
+		background:#f4f4f4;		/* center column background colour */
+	}
+	.blogstyle .colleft {
+		right:25%;				/* width of the middle column */
+		background:#fff;			/* left column background colour */
+	}
+	.blogstyle .col1 {
+		width:46%;				/* width of center column content (column width minus padding on either side) */
+		left:52%;				/* 100% plus left padding of center column */
+	}
+	.blogstyle .col2 {
+		width:21%;				/* Width of left column content (column width minus padding on either side) */
+		left:56%;				/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
+	}
+	.blogstyle .col3 {
+		width:21%;				/* Width of right column content (column width minus padding on either side) */
+		left:60%;				/* Please make note of the brackets here:
+							(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
+	}
+	/* --> */
+	</style>
+</head>
+<body onload="init()">
+
+<div id="header">
+	<p>Object Search active builder</p>
+	<p>...</p>
+</div>
+
+<p><a href="javascript:loadData();">Load Data</a>
+	<select id="selData" size="1" name="selData" onchange="selectData()">
+	<option value="-1">Select Data
+	</option>
+	</select>
+            
+<div class="colmask blogstyle">
+	<div class="colmid">
+		<div class="colleft">
+			<div class="col1">
+				<!-- Column 1 start -->
+				<input type="button" value="Rank Features" name="rankButton" onclick="refreshRankedFeatures();">
+				<select id="selNumberFeatures" size="1" name="selData" onchange="changeNumberOfFeatures()">
+	                <option value="100" selected="selected">100</option>
+	                <option value="200">200</option>
+	                <option value="1000">1000</option>
+	                <option value="2000">2000</option>
+	                <option value="10000">10000</option>
+	                <option value="100000">100000</option>
+                </select>
+				<a href="#" id="linkResetCache">Reset Cache</a>
+				<br>
+				<div id="DivRankedFeaturesTable"></div>
+				<!-- Column 1 end -->
+			</div>
+			<div class="col2">
+				<!-- Column 2 start -->
+				<a href="javascript:bulkAddFeatures();"><span style="color:red">Bulk Add Search Features</span></a><br/>
+				<input id="txtSearchFeature" type="text" width="10"> 
+				<input type="button" value="Add" name="addSearchFeature" onclick="addSearchFeature();"/>
+                <br/>
+				<div id="DivCurrentFeatureTable"></div>
+				<!-- Column 2 end -->
+			</div>
+			<div class="col3">
+				<!-- Column 3 start -->
+				<a href="javascript:createNewSession();"><span style="color:red">Create new session</span></a><br/>
+				<a href="javascript:loadSession();">Sessions</a>
+				<select id="selSession" size="1" name="selSession" onchange="selectSession()">
+				<option value="-1">Select Session
+				</option>
+				</select>				
+				
+				<div id="DivTrainingSessionTable"></div>
+				<br/>
+				<a href="javascript:bulkAddValues();"><span style="color:red">Bulk Add Values</span></a><br/>
+				<input id="txtFieldValue" type="text" width="10"> <input type="button" value="Add" name="addValueBt" onclick="addFieldValue();"/>
+				<br/>
+				
+				<div id="DivQueryValues"></div>
+				 
+				<input id="txtFeatureTemplate" type="text" width="10"> <input type="button" value="Add" name="addFeatureTemplateBt" onclick="addFeatureTemplate();"/>
+				<br/>
+				<div id="DivFeatureTemplates"></div>
+				
+				<!-- Column 3 end -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p>Object Search (c) 2009</p>
+</div>
+<div id="dlgProgress" style="display:none">Loading...</div>
+</body>
+</html>

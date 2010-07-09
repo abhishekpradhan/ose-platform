@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+
+  <title>User Manual</title>
+
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="fullahead.org" />
+  <meta name="keywords" content="XHTML, CSS, template, FullAhead" />
+  <meta name="description" content="A valid, XHTML 1.0 template" />
+  <meta name="robots" content="index, follow, noarchive" />
+  <meta name="googlebot" content="noarchive" />
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			jQuery.noConflict();
+			jQuery(document).ready(function(){
+				var isClicked = false;
+				
+				jQuery("#contactBar").click(function(){
+					if(!isClicked){
+						jQuery(".edge").stop().fadeIn();
+						jQuery("#contact,#contactBar").animate({"left" : "+=700px"}, "slow");
+						isClicked = true;
+					}
+					else{
+						jQuery(".edge").stop().fadeOut();
+						jQuery("#contact,#contactBar").animate({"left" : "-=700px"}, "slow");
+						isClicked = false;
+					}
+				});
+			});
+		</script>
+  
+  <link rel="stylesheet" type="text/css" href="css/man/html.css" media="screen, projection, tv " />
+  <link rel="stylesheet" type="text/css" href="css/man/layout.css" media="screen, projection, tv" />
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+
+  <!-- Conditional comment to apply opacity fix for IE #content background.
+       Invalid CSS, but can be removed without harming design -->
+  <!--[if gt IE 5]>
+  <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection, tv " />
+  <![endif]-->
+
+</head>
+
+<body>
+
+<!-- edge effect -->
+		<div class="edge" id="left"></div>
+		<div class="edge" id="right"></div>
+		<div class="edge" id="top"></div>
+		<div class="edge" id="bottom"></div>
+		
+		<!-- contact tab -->
+		<div id="contactBar"></div>
+		<div id="contact">
+			<div style="margin:50px;">
+				<table width="50px" height="50px">
+					<tr>
+						<td>
+							<div class=" width33 floatLeft">
+										<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile5/533/75/n832555222_3053.jpg" /></a>
+										<h4>Penn Su</h4>
+							</div>
+						</td>
+						<td>
+							<div class="floatRight">
+								<h4>University of Illinois: Urbana Champaign</h4>
+								<h4>Sophomore in Computer Science</h4>
+								<h4>Email: pennsu2 at uiuc dot edu</h4>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class=" width33 floatLeft">
+									<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile2/809/40/n1273620385_26790.jpg" /></a>
+									<h4>Abhishek Pradhan</h4>
+						</div>
+						</td>
+						<td>
+						<div class="floatRight">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Sophomore in Computer Science</h4>
+							<h4>Email: apradha2 at uiuc dot edu</h4>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class="floatLeft">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Ph.D Student in Computer Science</h4>
+							<h4>Email: kimpham2 at uiuc dot edu</h4>
+						</div>
+						</td>
+						<td>
+							<div class=" floatRight">
+								<a><img style="max-width: 100px;" src="http://photos-f.ak.fbcdn.net/photos-ak-sf2p/v55/163/34/1954915/s1954915_34441669_6681.jpg " /></a>
+							<h4>Kim Pham</h4>
+						</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+<!-- #wrapper: centers the content and sets the width -->
+<div id="wrapper">
+
+  <!-- #content: applies the white, dropshadow background -->
+  <div id="content">
+
+<!-- #menu: topbar menu of the site.  Use the helper classes .two, .three, .four and .five to set
+                the widths for 2, 3, 4 and 5 item menus. -->
+    <ul id="menu" class="four">
+      <li><a href="search.html" title="Search Portal"><span class="big">S</span>earch</a></li>
+      <li><a href="dev manual.html" title="Developer Manual"><span class="big">D</span>eveloper</a></li>
+      <li><a href="user manual.html" title="User Manual" class="here"><span class="big">U</span>ser</a></li>
+      <li><a href="about.html" title="Know Us"><span class="big">A</span>bout</a></li>
+    </ul>
+  
+    <!-- #header: holds site title and subtitle -->
+    <div id="header">
+      <h1>User Manual</h1>
+	  <span class="highlight">Illinois Course Recommendation & Search Engine</span>
+    </div>
+
+    <!-- #page: holds all page content, as well as footer -->
+    <div id="page">
+      <p>
+        The iCourse software is a server implementable search engine that is designed to aid the user in order to be able easily locate course homepages based on a limited amount of information or keywords. The usage of this system has been laid out in a simple and straightforward pattern that will allow the user to easily search for something they are looking for and in turn provide relevant recommendations in terms of course websites and relevant information contained within them. 
+      </p>
+
+	  <h1>Fields:</h1>
+	  
+      <p>
+        The individual fields are developed as such that they allow for the user to use a limited amount of information to produce accurate and germane results. As such the engine is not only a resource to search for homepages but rather also a recommendation tool for interests that the user might hold.
+      </p>
+	  
+	  <img src="img/image2981.gif" width="500px" height="400px" class="floatRight" />
+
+	  <h1>Submit Feedback:</h1>
+	  
+      <p>
+			Submitting feedback is the best means of constantly improving our search engine, as being in its infant stages we allow the user to provide helpful feedback by marking the document they were searching for, in order to be able to correctly determine what our search engine should be looking for! Thus we provide the following interface next to your search results allowing you to constantly improve our search engine.
+      </p>
+
+	  <p>
+		Let us take an example:
+	  </p>
+	  
+	  <p>
+		<i>
+			I am looking for a course homepage at stanford that covers databases, I don't know what the title of the course is, nor who is teaching it, but I do know that I might consider taking it in the future!
+		</i>
+	  </p>
+	  
+	  <p>
+		Given the search terms then:
+		</p>
+		<ul>
+			<li>University: stanford</li>
+			<li>Content: databases</li>
+		</ul>
+		
+		<p>
+			Perhaps I can find what I am looking for...
+		</p>
+		
+		<img src="img/image3171.gif" width="500px" height="400px" class="floatRight" />
+		
+	  <p>	
+	  
+		Great I found the page I was looking for thus I checkmark it, click the feedback button as a courtesy, and head on over to the link.
+
+	  </p>
+	  
+	  <h1>Search Aids:</h1>
+	  
+	  <p>
+		Our system is designed such that it is able to retrieve relevant course information from the page that might aid you in your search process called a snippet. Finally we have a probability distribution that allows you too look at the relevancy of the result to your individual search criterion and finally it lets you look at the possibility of which the page you might be going to is actually a search page.
+	  </p>
+	  
+	  <p>
+		As such these are tools available to you in the use of our search engine, we hope you enjoy your experience.
+	  </p>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+
+		#MyPageTableDiv table {
+			border-collapse:collapse; width: 100%;
+		}
+        #MyPageTableDiv .yui-dt-loading {
+        	text-align: center;background-color: transparent;
+		}
+
+#main {
+    background:#9c9;
+    float:left;
+	margin-left: 200px;
+    width: 70%;
+    z-index: 10
+    }
+#sidebar {
+    background:#EDF5FF;
+	margin-left: 200px;
+    width:70%;
+    }

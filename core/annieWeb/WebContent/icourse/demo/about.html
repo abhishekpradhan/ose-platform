@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+
+  <title>About Us</title>
+
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="fullahead.org" />
+  <meta name="keywords" content="XHTML, CSS, template, FullAhead" />
+  <meta name="description" content="A valid, XHTML 1.0 template" />
+  <meta name="robots" content="index, follow, noarchive" />
+  <meta name="googlebot" content="noarchive" />
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			jQuery.noConflict();
+			jQuery(document).ready(function(){
+				var isClicked = false;
+				
+				jQuery("#contactBar").click(function(){
+					if(!isClicked){
+						jQuery(".edge").stop().fadeIn();
+						jQuery("#contact,#contactBar").animate({"left" : "+=700px"}, "slow");
+						isClicked = true;
+					}
+					else{
+						jQuery(".edge").stop().fadeOut();
+						jQuery("#contact,#contactBar").animate({"left" : "-=700px"}, "slow");
+						isClicked = false;
+					}
+				});
+			});
+		</script>
+  
+  <link rel="stylesheet" type="text/css" href="css/man/html.css" media="screen, projection, tv " />
+  <link rel="stylesheet" type="text/css" href="css/man/layout.css" media="screen, projection, tv" />
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+
+  <!-- Conditional comment to apply opacity fix for IE #content background.
+       Invalid CSS, but can be removed without harming design -->
+  <!--[if gt IE 5]>
+  <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection, tv " />
+  <![endif]-->
+
+</head>
+
+
+<body>
+
+<!-- edge effect -->
+		<div class="edge" id="left"></div>
+		<div class="edge" id="right"></div>
+		<div class="edge" id="top"></div>
+		<div class="edge" id="bottom"></div>
+		
+		<!-- contact tab -->
+		<div id="contactBar"></div>
+		<div id="contact">
+			<div style="margin:50px;">
+				<table width="50px" height="50px">
+					<tr>
+						<td>
+							<div class=" width33 floatLeft">
+										<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile5/533/75/n832555222_3053.jpg" /></a>
+										<h4>Penn Su</h4>
+							</div>
+						</td>
+						<td>
+							<div class="floatRight">
+								<h4>University of Illinois: Urbana Champaign</h4>
+								<h4>Sophomore in Computer Science</h4>
+								<h4>Email: pennsu2 at uiuc dot edu</h4>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class=" width33 floatLeft">
+									<a><img style="max-width: 100px;" src="http://profile.ak.facebook.com/profile2/809/40/n1273620385_26790.jpg" /></a>
+									<h4>Abhishek Pradhan</h4>
+						</div>
+						</td>
+						<td>
+						<div class="floatRight">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Sophomore in Computer Science</h4>
+							<h4>Email: apradha2 at uiuc dot edu</h4>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class="floatLeft">
+							<h4>University of Illinois: Urbana Champaign</h4>
+							<h4>Ph.D Student in Computer Science</h4>
+							<h4>Email: kimpham2 at uiuc dot edu</h4>
+						</div>
+						</td>
+						<td>
+							<div class=" floatRight">
+								<a><img style="max-width: 100px;" src="http://photos-f.ak.fbcdn.net/photos-ak-sf2p/v55/163/34/1954915/s1954915_34441669_6681.jpg " /></a>
+							<h4>Kim Pham</h4>
+						</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+<!-- #wrapper: centers the content and sets the width -->
+<div id="wrapper">
+
+  <!-- #content: applies the white, dropshadow background -->
+  <div id="content">
+
+<!-- #menu: topbar menu of the site.  Use the helper classes .two, .three, .four and .five to set
+                the widths for 2, 3, 4 and 5 item menus. -->
+    <ul id="menu" class="four">
+      <li><a href="search.html" title="Search Portal"><span class="big">S</span>earch</a></li>
+      <li><a href="dev manual.html" title="Developer Manual"><span class="big">D</span>eveloper</a></li>
+      <li><a href="user manual.html" title="User Manual"><span class="big">U</span>ser</a></li>
+      <li><a href="about.html" title="Know Us" class="here"><span class="big">A</span>bout</a></li>
+    </ul>
+  
+    <!-- #header: holds site title and subtitle -->
+    <div id="header">
+      <h1>Why iCourse?</h1>
+	  <span class="highlight">Illinois Course Recommendation & Search Engine</span>
+    </div>
+
+    <!-- #page: holds all page content, as well as footer -->
+    <div id="page">
+
+      <h1>Premise</h1>
+
+      <p>
+        Most persons concerned with the academia today are well aware of the fact that a lot of their course homepages usually lie far within university domains with long URL's to remember. As such there is a missing tool that exists that allows them to easily look up these pages with an extremely limited amount of information. iCourse was thus conceived with this idea that it would fill this gap and provide itself as a tool that would ease the lives of students and faculty alike in terms of finding course homepages by creating a search engine that was cheap and easy to implement.
+      </p>
+
+	  <h1>What is iCourse?</h1>
+	  
+      <p>
+        iCourse is a natural search engine that is available as a tool for students, instructors and anyone interested in the academia. It allows the user to perform directed searches on course homepages, and as such is a modifiable system to meet a client's need. Unlike many other search engines such as Google and Yahoo that require you to enter several keywords or the course number and university to find a course website, a system such as this iCourse gives you access to a vast amount of information concerning courses in the academia with a very little amount of information. 
+      </p>
+	
+	  <h1>Why use it?</h1>
+      <p>
+			As a piece of technology it can seamlessly integrate into Siebel Center's natural environment, running off the many available servers, iCourse is a tool that would require very little in extra resources to be implemented but would provide a mass utility to those who have access to it, available online and perhaps integrated into the Find@Siebel stations located all around Siebel it provides students and faculty quick access to course homepages and material wherever they need it. Due to its nature in the fact that it uses the YahooBOSS interface to gather data, iCourse arrives as a tool that is easy to implement and does not require the massive amount of server farms you would need to implement a general search engine as Google on your own. As a lighter and cheaper alternative to implement, iCourse provides a search capability that matches and thus even surpasses many of the popular search engines available to the general audience today. 
+      </p>
+	  
+	  <h1>Our Vision</h1>
+	  
+	  <p>
+		iCourse is built on the AnnieSearch technology that easily allows the developer to create various specialized and directed searches similar to iCourse, and as such it is capable of acting as cheap and easy solution to implement various kinds of directed searches. This paves the way for energy efficient computing standards that allow for greater usage of space, time and power. Specific to iCourse we hope to transform the lives of the average college/high school student or even academically interested individual as they would no longer be limited sources of online teaching systems such as MIT OpenCourseWare, rather they would be able to access any sum of academic knowledge that they want using the lecture slides, and information that we usually find on course homepages today. We hope that iCourse as a search engine is able to build a community of users who are academically motivated and eager to learn more about various spheres of life. Whether it is for course registration or just to explore a new subject we hope that iCourse provides itself as a tool to the academically oriented community as a whole.
+	  </p>
+	  
+	  <h1>What about the near future?</h1>
+	  
+      <p>
+			Our goals as they stand for the future are set; in the near future we hope to achieve two highly attainable goals.
+      </p>
+	  
+	  <blockquote>
+	  <h3>Seamless Integration into Siebel's infrastructure</h3>
+		<p>
+			Due to its status as a web implementable system we hope to integrate this system into various aspect of the Siebel center, primarily by integrating it into Find@Siebel stations found around the building along with commonly used Computer Science websites such as the Department of Computer Science website along with the Computer Science Agora. As such iCourse is a network tool that would be able to efficiently and seamless integrate with student life on campus.
+		</p>
+		<h3>Community Building</h3>
+		<p>
+			One of the far reaches of this research project would be to develop a system that aids in the development of a community among the students and faculty that aids in the recommendation, review and greater awareness of courses on the university campus.
+		</p>
+	   </blockquote>
+	  
+	 <p> 
+		iCourse is part of an ongoing research project conducted in the Database and Information Systems Lab at the University of Illinois at Urbana - Champaign, as such iCourse as an application in itself was developed as a research project conducted by undergraduate students Penn Su, Abhishek Pradhan and graduate student and mentor Kim Pham. Over the coming months we hope to make this system accurate and robust.
+	 </p>
+	  
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>

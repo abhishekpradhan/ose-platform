@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tagging Panel</title>
+<script type="text/javascript" src="../util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="js/osBuilder.js" ></script>
+<script type="text/javascript" src="js/osTaggingPane.js" ></script>
+      
+</head>
+
+<body>
+
+<p>Tags for&nbsp;
+<a id="anchorCurrentPage" target="_blank" href="#">...</a>
+<font size="2">Doc ID : <span id="spanDocId" >??</span>, Score : <span id="spanScore">??</span><a href="#" id="anchorCacheLink" target="_blank">Cache</a></font>
+<br>
+<a id="previousLink" href="#">Previous</a> - 
+<a id="nextLink" href="#">Next</a>
+<br>
+<font size="2">(enter tag and click &quot;Add&quot; one at a time, click on tag to remove)</font>
+
+<form action="" method="">
+	<input id="inpDomainId" type="hidden" name="domainId" value="1">
+	<input id="inpFieldNames" type="hidden" name="names" value="brand,model,mpix,zoom,price,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="1,2,3,4,5,6">
+	<input id="inpFieldTypes" type="hidden" name="names" value="keyword,super_keyword,number,number,number,other">
+		
+	<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+		
+		<tr>
+			<td>Brand</td>
+			<td>
+			<span id="brand_span"></span><input id="brand_txtTag" type="text" name="brand" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('brand');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Model</td>
+			<td>
+			<span id="model_span"></span><input id="model_txtTag" type="text" name="model" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('model');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Mpix</td>
+			<td>
+			<span id="mpix_span"></span><input id="mpix_txtTag" type="text" name="mpix" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('mpix');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Zoom</td>
+			<td>
+			<span id="zoom_span"></span><input id="zoom_txtTag" type="text" name="zoom" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('zoom');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Price</td>
+			<td>
+			<span id="price_span"></span><input id="price_txtTag" type="text" name="price" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('price');">Last Tags</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Other</td>
+			<td>
+			<span id="other_span"></span><input id="other_txtTag" type="text" name="other" size="11"><a href="javascript:addAllTags();">Add</a>-----<a href="javascript:setLastTags('other');">Last Tags</a>
+			</td>
+		</tr>
+		
+	</table>
+</form>
+<a href="javascript:tagAllResult()">Tag All Result</a> <br>
+<div id="debugDiv"></div>
+
+</body>
+
+</html>

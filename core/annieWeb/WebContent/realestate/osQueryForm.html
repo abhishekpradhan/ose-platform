@@ -1,0 +1,160 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Query Form</title>
+<script type="text/javascript" src="../util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="../js/scriptaculous.js" ></script>
+<script type="text/javascript" src="../js/effects.js" ></script>
+<script type="text/javascript" src="../js/Dialog.js" ></script>
+<script type="text/javascript" src="js/osQueryForm.js" ></script>
+
+
+</head>
+
+<body onload="init()">
+
+<form method="POST" action=".">
+	<input id="inpDomainId" type="hidden" name="domainId" value="5">
+	<input id="inpFieldNames" type="hidden" name="names" value="loca,type,price,beds,baths,area,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="51,52,53,54,55,56,57">
+	
+	<p><font color="#0000FF"><b>Housing Search Builder</b></font></p>
+	<p><a href="javascript:loadIndices();">Load Indices</a>
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select>
+    <br><a href="javascript:loadFeatures();">Load Features</a> 
+       <a target="_blank" href="http://warbler.cs.uiuc.edu:8080/trac/wiki/FeatureLanguage">FeatureLanguage</a>
+    <br><a href="javascript:loadQueries();">Load Query</a>
+            <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+            <option value="-1">Select query
+			</option>
+            </select>
+        <a href="javascript:showQueryFeedback();">Show Feedback</a>
+    </p>
+	<table border="1"  id="table1" height="251">
+		
+		<tr>
+			<td><b>Loca </b> </td>
+			
+				<td><input id="inpField_loca" type="text" name="loca" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_loca" onchange="toggleFeature('loca')">Off</td>
+			<td>
+				<div id="loca_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('loca');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Type </b> </td>
+			
+				<td><input id="inpField_type" type="text" name="type" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_type" onchange="toggleFeature('type')">Off</td>
+			<td>
+				<div id="type_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('type');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Price </b> </td>
+			
+				<td><input id="inpField_price" type="text" name="price" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_price" onchange="toggleFeature('price')">Off</td>
+			<td>
+				<div id="price_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('price');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Beds </b> </td>
+			
+				<td><input id="inpField_beds" type="text" name="beds" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_beds" onchange="toggleFeature('beds')">Off</td>
+			<td>
+				<div id="beds_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('beds');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Baths </b> </td>
+			
+				<td><input id="inpField_baths" type="text" name="baths" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_baths" onchange="toggleFeature('baths')">Off</td>
+			<td>
+				<div id="baths_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('baths');">Add</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>Area </b> </td>
+				<td><input id="inpField_area" type="text" name="area" size="28"></td>
+		</tr>		
+		<tr>
+			<td><input type="checkbox" name="cb_area" onchange="toggleFeature('area')">Off</td>
+			<td>
+				<div id="area_features_list_div">
+				</div>
+				<a href="javascript:add_feature('area')">Add</a>
+			</td>
+		</tr>		
+				
+		<tr>
+			<td><b>Other </b> </td>
+			
+				<td><input id="inpField_other" type="text" name="other" disable="true" size="28"></td>
+			
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_other" onchange="toggleFeature('other')">Off</td>
+			<td>
+				<div id="other_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('other');">Add</a>
+			</td>
+		</tr>
+		
+		
+	</table>
+	<p><input type="button" value="Search By Features" name="B1" onclick="searchByFeatures()">
+	<input type="reset" value="Reset" name="B2">
+	<input type="button" value="OSearch" name="B3" onclick="searchLogistic()">
+	</p>
+	<p> <input type="button" value="Lucene Search" name="B4" onclick="searchLucene()">
+	</p>
+	<p><a href="javascript:saveFeatures();">Save</a> </p>
+	<p>Feature String</p>
+	<p><textarea id="txtFeatureString" rows="9" name="S1" cols="30"></textarea></p>
+	<p>&nbsp;</p>
+	<div id="dlgProgress" style="display:none">Loading...</div>
+</form>
+
+</body>
+
+</html>

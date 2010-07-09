@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <title>AnnieSearch Demo : Professor Homepage Search  </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        
+        <!-- source file -->
+        <script type="text/javascript" src="../js/prototype.js"></script>
+        <script type="text/javascript" src="js/training.js"></script>
+        <script type="text/javascript" src="../util.js"></script>
+        
+	
+		<link rel="stylesheet" type="text/css" href="js/yui/combo.css">
+ 		<script type="text/javascript" src="js/yui/combo.js"></script> <!-- -->
+ 		
+<!-- Combo-handled YUI CSS and JS files:
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.6.0/build/fonts/fonts-min.css&2.6.0/build/container/assets/skins/sam/container.css&2.6.0/build/paginator/assets/skins/sam/paginator.css&2.6.0/build/datatable/assets/skins/sam/datatable.css">
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.6.0/build/yahoo/yahoo-min.js&2.6.0/build/event/event-min.js&2.6.0/build/connection/connection-min.js&2.6.0/build/dom/dom-min.js&2.6.0/build/container/container-min.js&2.6.0/build/datasource/datasource-min.js&2.6.0/build/element/element-beta-min.js&2.6.0/build/paginator/paginator-min.js&2.6.0/build/datatable/datatable-min.js&2.6.0/build/json/json-min.js"></script>
+-->
+         
+		<link type="text/css" rel="stylesheet" href="css/google.css">
+        <link type="text/css" rel="stylesheet" href="css/googleMod.css">
+        <style>
+        
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+
+		#MyPageTableDiv table {
+			border-collapse:collapse; width: 100%;
+		}
+        #MyPageTableDiv .yui-dt-loading {
+        	text-align: center;background-color: transparent;
+		}
+
+#main {
+    background:#9c9;
+    float:left;
+    width:900px;
+    z-index: 10
+    }
+#sidebar {
+    background:#EDF5FF;
+    float:right;
+    width:700px;
+    z-index: -10
+    }
+    
+#taggingDiv
+{
+			position: fixed;
+			left: 450px;
+			top: 10px;
+			width: 400px;
+			padding: 10px;
+			background-color: #F2F2F2;
+}
+  
+        </style>
+        
+    </head>
+    
+<body onload = "init()" class="yui-skin-sam" >
+	<input id="inpDomainId" type="hidden" name="domainId" value="2">
+	<input id="inpFieldNames" type="hidden" name="names" value="name,dept,univ,area,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="7,8,9,10,11">
+	<input id="inpFieldTypes" type="hidden" name="names" value="super_keyword,super_keyword,super_keyword,text,other">	
+	
+<div id="wrap">        
+    <div id="main">
+
+	<p><font size="4">AnnieSearch Demo : Professor Homepage Search  </font></p>
+	<p><a href="javascript:loadIndices();">Load Indices</a>
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select>
+		
+<br><a href="javascript:loadQueries();">Load Query for field</a>
+		<select id="selField" size="1" name="selField" onchange="selectField()">
+				<option value="-1" selected="true">Select Field</option>
+	            
+	            <option value="7">name</option>
+				
+	            <option value="8">dept</option>
+				
+	            <option value="9">univ</option>
+				
+	            <option value="10">area</option>
+				
+	            
+		</select>
+            
+        <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+	            <option value="-1">Select query
+				</option>
+        </select>
+    </p>
+    
+<FORM id="annieForm" ACTION="">
+	<table border="0" width="100%" id="table2">
+		<tr>
+			<td>
+			<table border="1" width="30%" style="border-collapse: collapse" id="table3">
+				
+				<tr>
+					<td><b>Name</b> </td>
+					
+						<td width="220"><input type="text" id="NAME" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Dept</b> </td>
+					
+						<td width="220"><input type="text" id="DEPT" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Univ</b> </td>
+					
+						<td width="220"><input type="text" id="UNIV" size="41" value="" ></td>
+					
+				</tr>
+				
+				<tr>
+					<td><b>Area</b> </td>
+					
+						<td width="220"><input type="text" id="AREA" size="41" value="" ></td>
+					
+				</tr>
+				
+			</table>
+			</td>
+	        <td><div> 	                
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	<p>
+	<input type="button" value="Search" name="search" onclick="submitSearchQuery()">
+    <input type="button" value="Submit Feedback" name="feedback" onclick="submitFeedbackData()">
+	<input type="reset" value="Clear" name="clear" onclick="resetForm()" >
+</p>
+
+	<div id="pag"><!-- pagination controls will go here --></div> 
+	<div id = "MyPageTableDiv" >
+	</div>
+
+	<input type="button" value="Jump To Record #" name="jumpTo" onclick="submitSearchQueryAndJumpTo()"> 
+		<input type="text" id="txtJumpTo" name="jumpTo" size="12" >
+    <input type="button" value="Submit Feedback" name="feedback1" onclick="submitFeedbackData()">
+</FORM>
+
+<p><textarea id="scratchBox" rows="4" name="S1" cols="80"></textarea></p>
+
+	</div>
+    <div id="sidebar">
+
+<div id="taggingDiv">
+	Tags for document : <span id="tagDocId" style="font-weight:bold">???</span> <br>
+	Field Id : <span id="tagFieldId" style="font-weight:bold">???</span> <br>
+	<p>
+	<div id="tagValues">	
+	</div>
+	<input type="button" onclick="addNewText()" value="Add">
+</div>
+
+
+<iframe name="frameWebpage" width="100%" height="800" src="#" >
+	Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+	</div>    
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7345119-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

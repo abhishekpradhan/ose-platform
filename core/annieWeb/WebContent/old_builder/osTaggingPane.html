@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tagging Panel</title>
+<script type="text/javascript" src="util.js" ></script>
+<script type="text/javascript" src="js/prototype.js" ></script>
+<script type="text/javascript" src="js/osTaggingPane.js" ></script>
+      
+      <script type='text/javascript'>
+         function change_country(type, value) {
+            $('country_type').value=type;
+            $('country_value').value=value;
+         }
+      </script>
+      <style type="text/css">		
+         #select_countries {
+            border: 1px solid #333;
+            margin-top: 5px;
+            height: 200px;
+            width: 200px;
+            overflow: auto;
+         }
+      </style>
+
+</head>
+
+<body>
+
+<p>Tags for&nbsp;
+<a id="anchorCurrentPage" target="_blank" href="#">...</a>
+<font size="2">Doc ID : <span id="spanDocId" >??</span>, Score : <span id="spanScore">??</span></font>
+<br>
+<a id="previousLink" href="#">Previous</a> - 
+<a id="nextLink" href="#">Next</a>
+<br>
+<font size="2">(enter tag and click &quot;Add&quot; one at a time, click on tag to remove)</font>
+
+<form action="" method="">	
+	<input id="inpDomainId" type="hidden" name="domainId" value="1">
+	<input id="inpFieldNames" type="hidden" name="names" value="brand,model,mpix,zoom,price,other">
+	<input id="inpFieldIds" type="hidden" name="names" value="1,2,3,4,5,6">
+	
+	<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>Brand</td>
+			<td>
+			<span id="brand_span"></span><input id="brand_txtTag" type="text" name="T13" size="11"><a href="javascript:addAllTags();">Add</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Model</td>
+			<td>
+			<span id="model_span"></span><input id="model_txtTag" type="text" name="T13" size="11"><a href="javascript:addTag('model');">Add</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Mpix</td>
+			<td>
+			<span id="mpix_span"></span><input id="mpix_txtTag" type="text" name="T13" size="11"><a href="javascript:addTag('mpix');">Add</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Zoom</td>
+			<td>
+			<span id="zoom_span"></span><input id="zoom_txtTag" type="text" name="T13" size="11"><a href="javascript:addTag('zoom');">Add</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Price</td>
+			<td>
+			<span id="price_span"></span><input id="price_txtTag" type="text" name="T13" size="11"><a href="javascript:addTag('price');">Add</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td>
+			<span id="other_span"></span><input id="other_txtTag" type="text" name="T13" size="11"><a href="javascript:addTag('other');">Add</a>
+			</td>
+		</tr>
+	</table>
+</form>
+<div id="debugDiv"></div>
+<!-- 
+ <fieldset>
+       <legend>Countries</legend>
+       <input type="text" name="country_value" id="country_value" value="United States" />
+       <input type="hidden" name="country_type" id="country_type" value="us" />
+       <a href="#" onclick="Element.show('select_countries'); return false;">Click to change</a><br />
+       <div id="select_countries" style="display: none;">
+          <div id="close" onclick="Element.hide('select_countries'); return false;">Close</div>
+          <div onclick="change_country('us', 'United states')"><img src="images/flags/us.gif" alt="us" /> United states</div>
+          <div onclick="change_country('ru', 'Russia')"><img src="images/flags/ru.gif" alt="us" /> Russia</div>
+          <div onclick="change_country('es', 'Spain')"><img src="images/flags/es.gif" alt="us" /> Spain</div>
+          <div onclick="change_country('ca', 'Canada')"><img src="images/flags/ca.gif" alt="ca" /> Canada</div>
+       </div>
+    </fieldset>
+  -->
+</body>
+
+</html>

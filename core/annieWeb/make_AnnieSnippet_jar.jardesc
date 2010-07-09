@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/KimCuong/Documents/PhD/Research/ObjectSearch/core_trunk/annieWeb/WebContent/WEB-INF/lib/AnnieSnippet.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/annieWeb/make_AnnieSnippet_jar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet.generator"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet.extractor"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet.test"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet.parser"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet"/>
+        <file path="/annieSnippet/.project"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os"/>
+        <file path="/annieSnippet/.classpath"/>
+        <javaElement handleIdentifier="=annieSnippet/src&lt;os.snippet.constants"/>
+    </selectedElements>
+</jardesc>
