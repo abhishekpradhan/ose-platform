@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="test" name="annieIndex.runtasks">
+	<import file="build.xml"/>
+	<target name="test">
+		<echo>Classpath : ${classpath}</echo>
+	</target>
+	<!-- this is to include annieIndex's dependent jars into classpath -->
+	<path id="annieIndex.lib">
+		<fileset dir="${basedir}/../annieIndex">
+			<include name="lib/*.jar"/>
+		</fileset>
+	</path>
+    <target name="index stats">
+	    <java classname="ose.index.tool.ShowIndex" failonerror="true" fork="yes">
+            <jvmarg line="-Xms32m -Xmx64m"/>
+	    <arg line="--type showStats --index ${index}"/>
+            <classpath refid="annieIndex.classpath"/>
+        </java>
+    </target>
+    <target name="show urls">
+        <java classname="ose.index.tool.ShowIndex" failonerror="true" fork="yes">
+		<arg line="--mode showUrls --index ${index} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="show urls from trec">
+        <java classname="ose.index.tool.TrecFilter" failonerror="true" fork="yes">
+		<arg line="--mode urls --trec ${input} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="update index stats">
+        <java classname="ose.index.tool.ShowIndex" failonerror="true" fork="yes">
+		<arg line="--mode updateDesc --append"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.classpath"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="filter trec dedup">
+        <java classname="ose.index.tool.TrecFilter" failonerror="true" fork="yes">
+		<arg line="--mode dedup --trec ${input} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.classpath"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="trec indexer">
+        <java classname="ose.index.TrecIndexer" failonerror="true" fork="yes">
+		<arg line="--trec ${trec} --index ${path} ${options}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.lib"/>
+            	<path refid="annieIndex.classpath"/>
+            </classpath>
+        </java>
+    </target>
+
+</project>
