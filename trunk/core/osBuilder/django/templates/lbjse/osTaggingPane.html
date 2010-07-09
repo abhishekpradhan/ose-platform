@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tagging Panel</title>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="js/osTaggingPane.js" ></script>
+      
+</head>
+
+<body>
+
+<p>Tags for&nbsp;
+<a id="anchorCurrentPage" target="_blank" href="#">...</a>
+<font size="2">Doc ID : <span id="spanDocId" >??</span>, Score : <span id="spanScore">??</span></font>
+<br>
+<a id="previousLink" href="#">Previous</a> - 
+<a id="nextLink" href="#">Next</a>
+<br>
+<font size="2">(enter tag and click &quot;Add&quot; one at a time, click on tag to remove)</font>
+
+<form action="" method="">	
+	<input id="inpDomainId" type="hidden" name="domainId" value="{{ domain.id }}">
+	<input id="inpFieldNames" type="hidden" name="names" value="{{ field.names|join:","}}">
+	<input id="inpFieldIds" type="hidden" name="names" value="{{ field.ids|join:","}}">
+		
+	<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+		{% for fieldName in field.names %}
+		<tr>
+			<td>{{fieldName|capfirst}}</td>
+			<td>
+			<span id="{{fieldName}}_span"></span><input id="{{fieldName}}_txtTag" type="text" name="{{fieldName}}" size="11"><a href="javascript:addAllTags();">Add</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+<div id="debugDiv"></div>
+
+</body>
+
+</html>

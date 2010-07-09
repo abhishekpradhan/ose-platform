@@ -1,0 +1,40 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'ObjectSearch annotation data explorer' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'ObjectSearch administration' %}</h1>
+{% endblock %}
+
+{% block content %}
+
+{% block indexCube %}
+<h2>Index cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>#docs</th>
+</tr>
+</table>
+{% endblock indexCube %}
+
+{% block domainCube %}
+<h2>Domain cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>#docs</th>
+</tr>
+</table>
+{% endblock domainCube %}
+
+{% block fieldCube %}
+{% endblock fieldCube %}
+
+{% block valueCube %}
+{% endblock valueCube %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties>
+
+<property>
+    <name>lbjse.domainId</name>
+    <value>{{domain.id}}</value>
+    <description>domain id</description>
+</property>
+
+<property>
+    <name>lbjse.indexId</name>
+    <value>{{index.id}}</value>
+    <description>index id</description>
+</property>
+
+<property>
+    <name>lbjse.lucene.IndexPath</name>
+    <value>{{index.indexpath}}</value>
+    <description>index path</description>
+
+</property>
+
+<property>
+    <name>lbjse.lucene.CachePath</name>
+    <value>{{index.cachepath}}</value>
+    <description>cache path</description>
+</property>
+
+<property>
+    <name>lbjse.examples.DocIds</name>
+    <value>
+    {{docIds|join:","}}
+	</value>
+    <description>list of annotated docs</description>
+</property>
+
+<property>
+    <name>lbjse.examples.QueryIds</name>
+    <value>
+    {{queryIds|join:","}}
+	</value>
+    <description>list of example queries</description>
+</property>
+
+</properties>

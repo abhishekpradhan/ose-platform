@@ -1,0 +1,6 @@
+discrete% WordsInBody(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedBody();
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense it.next(); 
+}

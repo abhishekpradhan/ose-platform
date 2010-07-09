@@ -1,0 +1,4 @@
+discrete{false, true} {{fieldInfo.name}}_InTitle(DocQueryPair dq) <-
+{
+	return Utils.contains(dq.getDoc().getTitle(), dq.getQuery().getFieldValue("{{fieldInfo.name}}"));
+}

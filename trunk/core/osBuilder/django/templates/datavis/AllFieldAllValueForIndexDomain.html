@@ -1,0 +1,37 @@
+{% extends "datavis/datacube.html" %}
+{% block fieldCube %}
+<h2>Field cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Field</th>
+<th>#docs</th>
+</tr>
+{% for field in fieldList %}
+<tr>
+<td>{{field.id}}</td>
+<td><a href="?{{request.GET.urlencode}}&field={{field.id}}">{{field.name}}</a></td>
+<td>{{field.aggCount}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock fieldCube %}
+
+{% block valueCube %}
+<h2>Value cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Tag</th>
+<th>#docs</th>
+</tr>
+{% for tag in valueList %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="?{{request.GET.urlencode}}&tag={{tag.value}}">{{tag.value}}</a></td>
+<td>{{tag.aggCount}}</td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock valueCube %}

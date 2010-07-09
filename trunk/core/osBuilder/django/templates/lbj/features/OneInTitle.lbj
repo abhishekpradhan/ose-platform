@@ -1,0 +1,4 @@
+discrete{false, true} {{fieldInfo.name}}_OneInTitle(DocQueryPair dq) <-
+{
+	return Utils.containsSome(dq.getDoc().getTitle(), dq.getQuery().getFieldValue("{{fieldInfo.name}}").split("\\s+"));
+}
