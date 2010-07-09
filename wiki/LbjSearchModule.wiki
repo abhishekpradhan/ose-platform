@@ -39,8 +39,6 @@ ant "LBJ learn" -Dsession=42 -Dtrec=c:\working\lbjSearch\grad_30002.tagtrec -Dnr
 
 == More commands ==
 
-
-== Evaluate Google Result ==
  1. google to rresult
 {{{
 D:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\lbjSearch>
