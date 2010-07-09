@@ -1,0 +1,256 @@
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.conf.Configuration).
+log4j:WARN Please initialize the log4j system properly.
+DBManager Initialized with parameters : 
+Connection : jdbc:mysql://localhost:3306/ObjectSearch
+Username : objectsearch
+Password : objectsearch
+Domain : grad
+Description : Graduate Student Search
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 800
+Counts : 759,41
+++++ Logistic Regression with ridge parameter of 0.01
+Coefficients...
+Variable      Coeff.
+       1     -11.3561
+       2      -8.2   
+Intercept     11.0215
+
+Odds Ratios...
+Variable         O.R.
+       1       0     
+       2       0.0003
+
+
+Correctly Classified Instances         795               99.375  %
+Incorrectly Classified Instances         5                0.625  %
+Kappa statistic                          0.9392
+Mean absolute error                      0.0073
+Root mean squared error                  0.0604
+Relative absolute error                  7.4468 %
+Root relative squared error             27.3823 %
+Total Number of Instances              800     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 754   5 |   a = 0
+   0  41 |   b = 1
+
+Updating model weight : 0.00625
+New weight is updated for field 41
+Model size : 3 1
+Processed : 5075,0,0,0
+x0 x -11.356067370494332	0
+x1 x -8.19996534837808	1
+ID : 5075.0
+, actual: 0, predicted: 0
+Writing model to resources/model/grad/name.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 200
+Counts : 179,21
+++++ Logistic Regression with ridge parameter of 0.01
+Coefficients...
+Variable      Coeff.
+       1      -1.9477
+       2      -2.6968
+       3      -1.9477
+Intercept      4.697 
+
+Odds Ratios...
+Variable         O.R.
+       1       0.1426
+       2       0.0674
+       3       0.1426
+
+
+Correctly Classified Instances         190               95      %
+Incorrectly Classified Instances        10                5      %
+Kappa statistic                          0.7223
+Mean absolute error                      0.0648
+Root mean squared error                  0.1892
+Relative absolute error                 33.9326 %
+Root relative squared error             61.7281 %
+Total Number of Instances              200     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 175   4 |   a = 0
+   6  15 |   b = 1
+
+Updating model weight : 0.05
+New weight is updated for field 42
+Model size : 4 1
+Processed : 5075,0,0,0,0
+x0 x -1.9477386734843487	0
+x1 x -2.6967571989655137	1
+x2 x -1.9477386734842104	2
+ID : 5075.0
+, actual: 0, predicted: 0
+Writing model to resources/model/grad/univ.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 73
+Counts : 58,15
+++++ Logistic Regression with ridge parameter of 0.01
+Coefficients...
+Variable      Coeff.
+       1      -4.6585
+       2       5.8874
+       3       0     
+       4       1.2815
+       5      -6.7989
+Intercept      3.9176
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0095
+       2     360.4555
+       3       1     
+       4       3.6019
+       5       0.0011
+
+
+Correctly Classified Instances          70               95.8904 %
+Incorrectly Classified Instances         3                4.1096 %
+Kappa statistic                          0.8772
+Mean absolute error                      0.0731
+Root mean squared error                  0.1904
+Relative absolute error                 22.0749 %
+Root relative squared error             47.1213 %
+Total Number of Instances               73     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 56  2 |  a = 0
+  1 14 |  b = 1
+
+Updating model weight : 0.0410958904109589
+New weight is updated for field 43
+Model size : 6 1
+Processed : 5075,0,0,0,0,0,0
+x0 x -4.658546553489016	0
+x1 x 5.887368627458645	1
+x2 x 0.0	2
+x3 x 1.2814585070170013	3
+x4 x -6.7989432304148	4
+ID : 5075.0
+, actual: 0, predicted: 0
+Writing model to resources/model/grad/area.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 780
+Counts : 737,43
+++++ Logistic Regression with ridge parameter of 0.01
+Coefficients...
+Variable      Coeff.
+       1      -3.3448
+       2      -2.8353
+       3      -7.8541
+       4      -5.3318
+       5     -10.9236
+Intercept     10.9263
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0353
+       2       0.0587
+       3       0.0004
+       4       0.0048
+       5       0     
+
+
+Correctly Classified Instances         773               99.1026 %
+Incorrectly Classified Instances         7                0.8974 %
+Kappa statistic                          0.9089
+Mean absolute error                      0.0101
+Root mean squared error                  0.0711
+Relative absolute error                  9.6368 %
+Root relative squared error             31.1578 %
+Total Number of Instances              780     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 736   1 |   a = 0
+   6  37 |   b = 1
+
+Updating model weight : 0.008974358974358974
+New weight is updated for field 44
+Model size : 6 1
+Processed : 5075,0,0,0,0,0,0
+x0 x -3.3447644500769806	0
+x1 x -2.835273925097933	1
+x2 x -7.854094930103788	2
+x3 x -5.33175732575563	3
+x4 x -10.923599996397332	4
+ID : 5075.0
+, actual: 0, predicted: 0
+Writing model to resources/model/grad/advi.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 40
+Counts : 20,20
+++++ Logistic Regression with ridge parameter of 0.01
+Coefficients...
+Variable      Coeff.
+       1      -3.0654
+       2      -4.1366
+       3      -6.2783
+       4       0.3401
+       5       0.1151
+       6      -2.2377
+       7      -3.8394
+       8       0.3112
+       9      -3.5415
+      10      -3.9633
+Intercept      5.631 
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0466
+       2       0.016 
+       3       0.0019
+       4       1.4051
+       5       1.1219
+       6       0.1067
+       7       0.0215
+       8       1.3651
+       9       0.029 
+      10       0.019 
+
+
+Correctly Classified Instances          36               90      %
+Incorrectly Classified Instances         4               10      %
+Kappa statistic                          0.8   
+Mean absolute error                      0.1359
+Root mean squared error                  0.2565
+Relative absolute error                 27.1778 %
+Root relative squared error             51.3069 %
+Total Number of Instances               40     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 17  3 |  a = 0
+  1 19 |  b = 1
+
+Updating model weight : 0.1
+New weight is updated for field 45
+Model size : 11 1
+Processed : 5075,0,1,0,1,1,0,0,0,1,1,1
+x0 x -3.0653765946943166	0
+x1 x -4.136578662610087	1
+x2 x -6.278312667155581	2
+x3 x 0.34010589126972035	3
+x4 x 0.11505936119161234	4
+x5 x -2.237664440319642	5
+x6 x -3.839441621629073	6
+x7 x 0.3112099993541002	7
+x8 x -3.541527839748078	8
+x9 x -3.9633101783122346	9
+ID : 5075.0
+, actual: 1, predicted: 1
+Writing model to resources/model/grad/other.logistic...done.
+2
+
+%BooleanFeature(Proximity(Phrase(research interests),Token(AREA),-10,0))

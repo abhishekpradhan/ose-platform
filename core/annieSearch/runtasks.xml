@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="test" name="annieSearch.runtasks">
+	<import file="build.xml"/>
+	<import file="../annieIndex/runtasks.xml"/>
+	<path id="annieIndex.lib">
+	    <fileset dir="${basedir}/../annieIndex">
+	        <include name="lib/*.jar"/>
+	    </fileset>
+	  </path>
+	<property name="classpath" refid="annieIndex.lib"/>
+	
+	<target name="test">
+        <echo>${classpath}</echo>
+    </target>
+    <target name="export htmltagtrec">
+        <java classname="ose.tools.IndexExporter" failonerror="true" fork="yes">
+		<arg line="--mode raw --index ${index} --domain ${domain} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.lib"/>
+            	<path refid="annieSearch.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="export tagonly">
+        <java classname="ose.tools.IndexExporter" failonerror="true" fork="yes">
+		<arg line="--mode tagonly --index ${index} --domain ${domain} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.lib"/>
+            	<path refid="annieSearch.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="export tagtrec">
+        <java classname="ose.tools.IndexExporter" failonerror="true" fork="yes">
+		<arg line="--mode tagtrec --index ${index} --domain ${domain} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieIndex.lib"/>
+            	<path refid="annieSearch.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="export allhtml">
+        <java classname="ose.tools.IndexExporter" failonerror="true" fork="yes">
+		<arg line="--mode allhtml --index ${index} --output ${output}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieSearch.classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="index tagger">
+        <java classname="ose.tools.IndexTagger" failonerror="true" fork="yes">
+		<arg line="--indexId ${index} --domainId ${domain} --tagurl ${tagurl}"/>
+            <jvmarg line="-Xms32m -Xmx512m"/>
+            <classpath>
+            	<path refid="annieSearch.classpath"/>
+            </classpath>
+        </java>
+    </target>
+</project>

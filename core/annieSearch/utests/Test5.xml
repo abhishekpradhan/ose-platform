@@ -1,0 +1,78 @@
+<UTEST>
+<INDEX>
+C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch/target/unittests/indexes/camera_10
+</INDEX>
+<FEATURE>
+HTMLTitle(system)  Token(system)  Phrase(system) Token(john) Phrase(john) Proximity(Token(instructor),Token(john),-5,0) Proximity(Token(fall),Token(semester,term),-5,5) Proximity(Token(fall),Number_body(_range(1900,2100)),-3,3) Proximity(Token(fall,winter,summer,spring,autumn),Number_body(_range(2009,2009)),-3,3) Number_body(_range(2009,2009)) Number_title(_range(2009,2009)) Proximity(Token(edu),Token(illinois),-3,3) Proximity(Top(Token(edu),1),Token(illinois),-3,3) Proximity(Token(university),Token(illinois),-3,3) Token(illinois) Token(computing) Phrase(computing) Token(instructor) Token(semester) Token(grading) Token(homework) Token(textbook) Token(announcements) Token(midterm) Phrase(course information) Phrase(class schedule) Token(spring,fall,summer,winter)
+</FEATURE>
+<SPAN>
+	<DOCID>0</DOCID>
+	<POS>24</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1429</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1680</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1938</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1970</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>2292</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>2308</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>2579</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>2851</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>3694</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>3868</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>143</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>1610</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>1936</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>2110</POS>
+</SPAN>
+<SPAN>
+	<DOCID>7</DOCID>
+	<POS>895</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>1431</POS>
+</SPAN>
+<TOTALDOC>6</TOTALDOC>
+<TOTALSPAN>17</TOTALSPAN>
+</UTEST>

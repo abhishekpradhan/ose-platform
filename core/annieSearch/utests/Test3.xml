@@ -1,0 +1,58 @@
+<UTEST>
+<INDEX>
+C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch/target/unittests/indexes/camera_10
+</INDEX>
+<FEATURE>
+HTMLTitle(john)  Token(john)  Token(science) Proximity(Token(department),Token(science),-5,5) Proximity(Token(professor),Token(science),-3,3) Proximity(Token(university),Token(illinois),-5,5) Token(illinois) Proximity(Token(professor),Token(illinois),-6,0) Proximity(Phrase(research group),Token(computer),-10,10) Proximity(Token(group),Token(computer),-3,3) Proximity(Or(Phrase(my research),Phrase(research interests),Phrase(research summary)),Token(computer),-50,0) Token(computer) HTMLTitle(homepage)  Token(professor)  Token(publication,publications,papers)  Phrase(Token(associate,adjunct,assistant),Token(professor))  Token(graduated,received) Phrase(program,Token(chair,committee)) Phrase(my research) Phrase(research interests) Token(biography) Phrase(curriculum vitae) Token(cv)
+</FEATURE>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>756</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>4109</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>4934</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>4936</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>78</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>417</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>449</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>614</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>628</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>642</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>78</POS>
+</SPAN>
+<SPAN>
+	<DOCID>7</DOCID>
+	<POS>78</POS>
+</SPAN>
+<TOTALDOC>4</TOTALDOC>
+<TOTALSPAN>12</TOTALSPAN>
+</UTEST>
