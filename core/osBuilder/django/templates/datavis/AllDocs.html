@@ -1,0 +1,25 @@
+{% extends "datavis/datacube.html" %}
+
+{% block content %}
+
+{% block docCube %}
+<h2>Doc List</h2>
+<table>
+<tr>
+<th>#</th>
+<th>Doc ID</th>
+<th>Tags</th>
+</tr>
+{% for doc in docList %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{doc.docid}}</td>
+<td><a target="_blank" href="{{doc.viewerUrl}}">{{doc.tags|safe}}</a></td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock docCube %}
+
+{% endblock content %}

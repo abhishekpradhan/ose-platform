@@ -1,0 +1,6 @@
+discrete% WordsInTitle(DocQueryPair dq) <-
+{
+	Collection c = dq.getDoc().getTokenizedTitle();
+	for (Iterator it = c.iterator(); it.hasNext(); )
+		sense it.next(); 
+}

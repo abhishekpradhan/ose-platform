@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Query Form</title>
+<script type="text/javascript" src="js/common/util.js" ></script>
+<script type="text/javascript" src="js/prototypejs/prototype.js" ></script>
+<script type="text/javascript" src="js/prototypejs/scriptaculous.js" ></script>
+<script type="text/javascript" src="js/prototypejs/effects.js" ></script>
+<script type="text/javascript" src="js/prototypejs/Dialog.js" ></script>
+<script type="text/javascript" src="js/osQueryForm.js" ></script>
+
+
+</head>
+
+<body onload="init()">
+
+<form method="POST" action=".">
+	<input id="inpDomainId" type="hidden" name="domainId" value="{{ domain.id }}">
+	<input id="inpFieldNames" type="hidden" name="names" value="{{ field.names|join:","}}">
+	<input id="inpFieldIds" type="hidden" name="names" value="{{ field.ids|join:","}}">
+	<input id="inpFieldTypes" type="hidden" name="names" value="{{ field.types|join:","}}">
+	
+	<p><font color="#0000FF"><b>{{ domain.description }} Builder</b></font></p>
+	<p><a href="javascript:loadIndices();">Load Indices</a>
+            <select id="selIndex" size="1" name="selIndex" onchange="selectIndex()">
+            <option value="-1">Select index
+			</option>
+            </select>
+    <br><a href="javascript:loadFeatures();">Load Features</a> 
+       <a target="_blank" href="http://warbler.cs.uiuc.edu:8080/trac/wiki/FeatureLanguage">FeatureLanguage</a>
+    <br><a href="javascript:loadQueries();">Load Query</a>
+            <select id="selQuery" size="1" name="selQuery" onchange="selectQuery()">
+            <option value="-1">Select query
+			</option>
+            </select>
+        <a href="javascript:showQueryFeedback();">Show Feedback</a>
+    </p>
+	<table border="1"  id="table1" height="251">
+		{% for fieldName in field.names %}
+		<tr>
+			<td><b>{{fieldName|capfirst}} </b> </td>
+			{% if forloop.last %}
+				<td><input id="inpField_{{fieldName}}" type="text" name="{{fieldName}}" disable="true" size="28"></td>
+			{% else %}
+				<td><input id="inpField_{{fieldName}}" type="text" name="{{fieldName}}" size="28"></td>
+			{% endif %}
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="cb_{{fieldName}}" onchange="toggleFeature('{{fieldName}}')">Off</td>
+			<td>
+				<div id="{{fieldName}}_features_list_div">				
+				</div>
+				<a href="javascript:add_feature('{{fieldName}}');">Add</a>
+			</td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+	<p><input type="button" value="Search By Features" name="B1" onclick="searchByFeatures()">
+	<input type="reset" value="Reset" name="B2">
+	<br>
+	<input type="button" value="OSearch" name="B3" onclick="searchLogistic()">
+	<input type="button" value="AnnotationSearch" name="AnnotationSearch" onclick="searchAnnotation()">
+	<br>
+	<input type="button" value="Lucene Search" name="B3" onclick="searchLucene()">
+	<br>
+	<input type="button" value="Feature Search on Annotated Docs" name="B1" onclick="searchByFeaturesOnAnnotation()">
+	
+	</p>
+	<p><a href="javascript:saveFeatures();">Save</a> </p>
+	<p>Feature String</p>
+	<p><textarea id="txtFeatureString" rows="9" name="S1" cols="30"></textarea></p>
+	<p>&nbsp;</p>
+	<div id="dlgProgress" style="display:none">Loading...</div>
+</form>
+
+</body>
+
+</html>

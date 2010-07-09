@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Search Result page</title>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/prototype.js" ></script>
+<script type="text/javascript" src="../js/scriptaculous.js" ></script>
+<script type="text/javascript" src="../js/effects.js" ></script>
+<script type="text/javascript" src="../js/Dialog.js" ></script>
+<script type="text/javascript" src="js/osResultPane.js" ></script>
+</head>
+
+<body onload="init()">
+	<input id="inpDomainId" type="hidden" name="domainId" value="{{ domain.id }}">
+	<input id="inpFieldNames" type="hidden" name="names" value="{{ field.names|join:","}}">
+	<input id="inpFieldIds" type="hidden" name="names" value="{{ field.ids|join:","}}">
+	
+<p><a id="anchorPrevious" href="javascript:test();">&lt;&lt;</a> 
+Result <span id="startIndex">??</span> to <span id="endIndex">??</span> of <span id="totalRecords">??</span>
+<a id="anchorNext" href="?">&gt;&gt;</a><input type="button" value="Jump To" onclick="jumpTo()" ><input id="txtJumpTo" type="text" ></p>
+
+<ol id="result_list">
+</ol>
+<div id="dlgSearchProgress" style="display:none">Loading...</div>
+</body>
+
+</html>

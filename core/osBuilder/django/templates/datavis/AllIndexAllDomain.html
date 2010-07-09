@@ -1,0 +1,39 @@
+{% extends "datavis/datacube.html" %}
+{% block indexCube %}
+<h2>Index cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>#tagged_docs</th>
+<th>Description</th>
+</tr>
+{% for index in indexList %}
+<tr>
+<td>{{index.id}}</td>
+<td><a href="?{{request.GET.urlencode}}&index={{index.id}}">{{index.name}}</a></td>
+<td>{{index.aggCount}}</td>
+<td>{{index.description}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock indexCube %}
+
+{% block domainCube %}
+<h2>Domain cube</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>#docs</th>
+</tr>
+{% for domain in domainList %}
+<tr>
+<td>{{domain.id}}</td>
+<td><a href="?{{request.GET.urlencode}}&domain={{domain.id}}">{{domain.name}}</a></td>
+<td>{{domain.aggCount}}</td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock domainCube %}

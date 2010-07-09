@@ -1,0 +1,10 @@
+discrete% {{fieldInfo.name}}_SurroundingWordInBody(DocQueryPair dq) <-
+{
+	String bodyText = dq.getDoc().getBody();
+	String fieldValue = dq.getQuery().getFieldValue("{{fieldInfo.name}}");
+	LinkedVector features = Utils.getSurroundingFeatures(bodyText, fieldValue,-2,2);
+	for (PositionWordPair pair = (PositionWordPair) features.get(0); pair != null; pair = (PositionWordPair) pair.next){
+		sense pair.getPosition() : pair.getWord();
+	}
+	
+}

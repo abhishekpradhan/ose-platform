@@ -1,0 +1,31 @@
+package lbjse.objectsearch.lbj;
+import lbjse.objectsearch.*;
+import java.util.*;
+
+discrete{false, true} Oracle(DocQueryPair dq) <-
+{
+  return dq.oracle();
+}
+
+{% for lbjFeature in allLBJFeatures %}
+{{lbjFeature}}  
+{% endfor %}
+
+{% for fieldInfo in field.fieldInfos %}
+mixed% {{fieldInfo.name}}_features(DocQueryPair dq) <-
+	{% for feature in fieldInfo.features %} {%ifequal fieldInfo.name "other"%}{% else %}{{fieldInfo.name}}_{% endifequal %}{{feature}}{%if forloop.last %}{%else%},{% endif %} 
+	{% endfor %}
+{% endfor %}
+
+{% for fieldInfo in field.fieldInfos %}
+discrete{false, true} {{fieldInfo.name}}_ranker(DocQueryPair dq) <-
+learn Oracle
+  using {{fieldInfo.name}}_features
+  from new DocQueryPairParser("professor/training_{{fieldInfo.name}}.xml") 10 rounds
+  with new SparseAveragedPerceptron(.1, 0, 2) 
+	
+  preExtract true
+  
+  cval 5 "random"
+end
+{% endfor %}
