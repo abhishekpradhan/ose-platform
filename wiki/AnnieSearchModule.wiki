@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+This module is to take a feature query as input and execute the query processor on feature index to return a list of web pages along with the features they contain. 
+
+There's some obsolete learning code in the module too (using weka learning toolkit). We've been using LBJ to do learning now. 
+
+= Details =
+
+  * QueryProcessorGettingStarted   : click here get familiar with the code
+  * FeatureLanguage                : detail of the feature language
