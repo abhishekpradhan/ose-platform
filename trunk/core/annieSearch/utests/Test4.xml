@@ -1,0 +1,230 @@
+<UTEST>
+<INDEX>
+C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch/target/unittests/indexes/camera_10
+</INDEX>
+<FEATURE>
+HTMLTitle(lenovo) Proximity(Token(lenovo),Token(manufacturer),-3,3) Token(lenovo) Proximity(Number_body(_range(12.1,15.6)),Token('"',in,inch),-2,0) Proximity(Number_title(_range(12.1,15.6)),HTMLTitle('"',in,inch),-2,0) Proximity(Number_body(_range(12.1,15.6)),Or(Phrase(screen size),Token(display)),0,7) Proximity(Number_body(_range(12.1,15.6)),Token(widescreen,wxga,xga,tft),-8,0) Proximity(Number_body(_range(119.95,384.05)),Token(gb),-2,0) Proximity(Number_title(_range(119.95,384.05)),HTMLTitle(gb),-2,0) Proximity(Number_body(_range(119.95,384.05)),Token(rpm),-5,5) Proximity(Number_body(_range(119.95,384.05)),Token(drive,hdd),-5,5) Proximity(Phrase(processor speed),Number_body(_range(1.95,2.55)),-4,0) Proximity(Number_body(_range(1.95,2.55)),Token(ghz),-2,0) Proximity(Number_title(_range(1.95,2.55)),HTMLTitle(ghz),-2,0) Phrase(Token('$'),Number_body(_range(563.83,1597.94))) Proximity(Token(price),Phrase(Token('$'),Number_body(_range(563.83,1597.94))),-4,3) Phrase(Top(Token('$'),3),Number_body(_range(563.83,1597.94))) Proximity(Top(Phrase(price,':'),1),Number_body(_range(563.83,1597.94)),-10,0) HTMLTitle(laptop)  Token(availability)  Token(laptop)  Phrase(Token(product),Token(descriptions,description,specification,specifications))  Token(warranty)  Token(manufacturer) 
+</FEATURE>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>174</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>207</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>222</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>224</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>494</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>498</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>926</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>928</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>930</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>957</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>979</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1153</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1297</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>1341</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>3808</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>4207</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>4211</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>5159</POS>
+</SPAN>
+<SPAN>
+	<DOCID>2</DOCID>
+	<POS>5161</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>228</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>849</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>855</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>894</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>491</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>574</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>576</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>650</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>652</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>882</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>884</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>971</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>1100</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>1144</POS>
+</SPAN>
+<SPAN>
+	<DOCID>4</DOCID>
+	<POS>1180</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>1386</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>1388</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>2130</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>2550</POS>
+</SPAN>
+<SPAN>
+	<DOCID>5</DOCID>
+	<POS>2586</POS>
+</SPAN>
+<SPAN>
+	<DOCID>6</DOCID>
+	<POS>47</POS>
+</SPAN>
+<SPAN>
+	<DOCID>6</DOCID>
+	<POS>54</POS>
+</SPAN>
+<SPAN>
+	<DOCID>6</DOCID>
+	<POS>353</POS>
+</SPAN>
+<SPAN>
+	<DOCID>6</DOCID>
+	<POS>373</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>448</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>566</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>571</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>1549</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>1567</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>1572</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>47</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>98</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>127</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>728</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>748</POS>
+</SPAN>
+<SPAN>
+	<DOCID>9</DOCID>
+	<POS>844</POS>
+</SPAN>
+<TOTALDOC>7</TOTALDOC>
+<TOTALSPAN>55</TOTALSPAN>
+</UTEST>

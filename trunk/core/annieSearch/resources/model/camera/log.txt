@@ -1,0 +1,231 @@
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 476
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1     -13.2387
+       2      33.3523
+Intercept     10.9499
+
+Odds Ratios...
+Variable         O.R.
+       1       0     
+       2 3.053071188943865E14
+
+
+Correctly Classified Instances         439               92.2269 %
+Incorrectly Classified Instances        37                7.7731 %
+Kappa statistic                          0.6641
+Mean absolute error                      0.1054
+Root mean squared error                  0.2294
+Relative absolute error                 48.2476 %
+Root relative squared error             69.6008 %
+Total Number of Instances              476     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 394  23 |   a = 0
+  14  45 |   b = 1
+
+Model size : 3 1
+Processed : 1,1,0.0687,0
+x0 x -13.238743387444178	0
+x1 x 33.352339333099415	1
+ID : 1.0
+, actual: 0, predicted: 0
+Writing model to resources/model/camera/brand.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 476
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1     -12.8455
+       2      15.3353
+Intercept     11.6504
+
+Odds Ratios...
+Variable         O.R.
+       1       0     
+       2 4571411.7395
+
+
+Correctly Classified Instances         453               95.1681 %
+Incorrectly Classified Instances        23                4.8319 %
+Kappa statistic                          0.759 
+Mean absolute error                      0.0691
+Root mean squared error                  0.1858
+Relative absolute error                 41.7129 %
+Root relative squared error             64.8219 %
+Total Number of Instances              476     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 411  22 |   a = 0
+   1  42 |   b = 1
+
+Model size : 3 1
+Processed : 1,1,0.0217,0
+x0 x -12.845544722574921	0
+x1 x 15.33533262971246	1
+ID : 1.0
+, actual: 0, predicted: 1
+Writing model to resources/model/camera/model.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 952
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1      -4.187 
+       2      -4.4015
+Intercept      5.8646
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0152
+       2       0.0123
+
+
+Correctly Classified Instances         923               96.9538 %
+Incorrectly Classified Instances        29                3.0462 %
+Kappa statistic                          0.8782
+Mean absolute error                      0.0539
+Root mean squared error                  0.1663
+Relative absolute error                 21.6778 %
+Root relative squared error             47.2243 %
+Total Number of Instances              952     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 798  16 |   a = 0
+  13 125 |   b = 1
+
+Model size : 3 1
+Processed : 1,0,0,0
+x0 x -4.187047643957924	0
+x1 x -4.401529328226423	1
+ID : 1.0
+, actual: 0, predicted: 0
+Writing model to resources/model/camera/mpix.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 952
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1      -5.1581
+       2      -3.0594
+Intercept      5.1839
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0058
+       2       0.0469
+
+
+Correctly Classified Instances         887               93.1723 %
+Incorrectly Classified Instances        65                6.8277 %
+Kappa statistic                          0.6284
+Mean absolute error                      0.0814
+Root mean squared error                  0.2004
+Relative absolute error                 36.0932 %
+Root relative squared error             59.7338 %
+Total Number of Instances              952     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 823   6 |   a = 0
+  59  64 |   b = 1
+
+Model size : 3 1
+Processed : 1,0,0,0
+x0 x -5.158100983043978	0
+x1 x -3.0593726560051486	1
+ID : 1.0
+, actual: 0, predicted: 0
+Writing model to resources/model/camera/zoom.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 952
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1      -3.3711
+       2      -1.6524
+Intercept      3.763 
+
+Odds Ratios...
+Variable         O.R.
+       1       0.0344
+       2       0.1916
+
+
+Correctly Classified Instances         843               88.5504 %
+Incorrectly Classified Instances       109               11.4496 %
+Kappa statistic                          0.4359
+Mean absolute error                      0.1544
+Root mean squared error                  0.2831
+Relative absolute error                 65.3123 %
+Root relative squared error             82.4414 %
+Total Number of Instances              952     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 789  33 |   a = 0
+  76  54 |   b = 1
+
+Model size : 3 1
+Processed : 1,0,0,0
+x0 x -3.371057354749963	0
+x1 x -1.652398935394403	1
+ID : 1.0
+, actual: 0, predicted: 0
+Writing model to resources/model/camera/price.logistic...done.
+Path = C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch
+Number of instances : 238
+++++ Logistic Regression with ridge parameter of 0.0010
+Coefficients...
+Variable      Coeff.
+       1       0.279 
+       2       0.0044
+       3      -2.0946
+       4      -1.7229
+       5      -0.406 
+Intercept      1.2129
+
+Odds Ratios...
+Variable         O.R.
+       1       1.3218
+       2       1.0044
+       3       0.1231
+       4       0.1786
+       5       0.6663
+
+
+Correctly Classified Instances         181               76.0504 %
+Incorrectly Classified Instances        57               23.9496 %
+Kappa statistic                          0.4876
+Mean absolute error                      0.3596
+Root mean squared error                  0.4232
+Relative absolute error                 74.2221 %
+Root relative squared error             85.9946 %
+Total Number of Instances              238     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+  58  40 |   a = 0
+  17 123 |   b = 1
+
+Model size : 6 1
+Processed : 1,0,0,0,0,0,0
+x0 x 0.27900357153472893	0
+x1 x 0.004392065519041784	1
+x2 x -2.094550540875548	2
+x3 x -1.722852398116146	3
+x4 x -0.40602445184331903	4
+ID : 1.0
+, actual: 0, predicted: 0
+Writing model to resources/model/camera/other.logistic...done.

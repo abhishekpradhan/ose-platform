@@ -1,0 +1,18 @@
+<UTEST>
+<INDEX>
+C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch/target/unittests/indexes/random100pages
+</INDEX>
+<FEATURE>
+Proximity(Token(camera),Number_body(),-1,1)
+</FEATURE>
+<SPAN>
+	<DOCID>74</DOCID>
+	<POS>913</POS>
+</SPAN>
+<SPAN>
+	<DOCID>84</DOCID>
+	<POS>138</POS>
+</SPAN>
+<TOTALDOC>2</TOTALDOC>
+<TOTALSPAN>2</TOTALSPAN>
+</UTEST>

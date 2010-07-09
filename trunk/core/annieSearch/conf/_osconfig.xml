@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ossearch>
+  <name>Logistic Search Demo</name>
+  <description>Camera domain for VLDB 2008</description>
+  <index_dir>C:/working/index</index_dir>
+  <main_index>amazon_digital_cameras</main_index>
+  <copyright>Kim Cuong Pham</copyright>
+  <other></other>
+</ossearch>
+
+<!--  todo : convert to hadoop conf format -->
+<property>
+    <name>dfs.client.buffer.dir</name>
+    <value>/tmp/hadoop/dfs/client</value>
+    <final>true</final>
+</property>

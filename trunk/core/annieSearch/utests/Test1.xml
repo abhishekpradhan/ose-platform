@@ -1,0 +1,22 @@
+<UTEST>
+<INDEX>
+C:\Users\KimCuong\Documents\PhD\Research\ObjectSearch\core_trunk\annieSearch/target/unittests/indexes/camera_10
+</INDEX>
+<FEATURE>
+Proximity(Token(camera),Number_body(),-1,1)
+</FEATURE>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>167</POS>
+</SPAN>
+<SPAN>
+	<DOCID>3</DOCID>
+	<POS>385</POS>
+</SPAN>
+<SPAN>
+	<DOCID>8</DOCID>
+	<POS>289</POS>
+</SPAN>
+<TOTALDOC>2</TOTALDOC>
+<TOTALSPAN>3</TOTALSPAN>
+</UTEST>

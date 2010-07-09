@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="thirdParty"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="src" path="weka_data"/>
+	<classpathentry excluding="peoplevertical/lucene/" kind="src" path="src"/>
+	<classpathentry kind="src" path="conf"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/weka-3.5.6"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/annieIndex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/annieDB"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-configuration-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/libsvm.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.9.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.5-bin.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/lucene-2.3.2"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

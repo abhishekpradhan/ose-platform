@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AnnieSearch" default="dist" basedir=".">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="thirdParty" location="thirdParty"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="lib"  location="lib"/>
+  <property name="annieIndex.location" value="../annieIndex"/>  
+  <path id="annieSearch.classpath">
+  	<pathelement location="build/classes"/>
+	<fileset dir="${basedir}/">
+		<include name="lib/*.jar"/>
+	</fileset>
+  </path>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+  	<javac srcdir="${src};${thirdParty}" destdir="${build}" >
+  	    	<classpath refid="annieSearch.classpath"/>
+  	</javac>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the AnnieSearch-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/AnnieSearch.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+  <target name="updateJar" description="update AnnieDB.jar, AnnieIndex.jar">
+    <!--
+    <copy todir="${lib}" file="../weka-3.5.6/dist/lib/weka-3.5.6.jar"/>
+    <copy todir="${lib}" file="../lucene-2.3.2/build/lucene-core-2.3.jar"/>
+    -->
+    <copy todir="${lib}" file="../annieDB/dist/lib/AnnieDB.jar"/>
+    <copy todir="${lib}" file="../annieIndex/dist/lib/AnnieIndex.jar"/>
+  </target>	
+  <target name="deps" description="Build all dependent projects." >
+	  <ant antfile="${annieIndex.location}/build.xml" inheritAll="false" target="deps"/>
+	  <ant antfile="${annieIndex.location}/build.xml" inheritAll="false" target="dist"/>
+	  <ant target="updateJar"/>
+  </target>
+
+  <import file="runtasks.xml"/>
+</project>

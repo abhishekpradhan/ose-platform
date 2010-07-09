@@ -1,0 +1,64 @@
+% 1 %BooleanFeature(HTMLTitle(home)) 
+% 2 %BooleanFeature(Phrase(phd student)) 
+% 3 %BooleanFeature(Phrase(my advisor)) 
+% 4 %BooleanFeature(Or(Phrase("e mail :"),Phrase("email :"))) 
+% 5 %BooleanFeature(Token(publication,publications,papers)) 
+% 6 %BooleanFeature(Proximity(Phrase(first year),Token(student),-4,0)) 
+% 7 %BooleanFeature(Proximity(Phrase(second year),Token(student),-4,0)) 
+% 8 %BooleanFeature(Phrase('my research')) 
+% 9 %BooleanFeature(Proximity(Phrase('i am'),Token(student),-10,10)) 
+% 10 %BooleanFeature(HTMLTitle(homepage))
+@RELATION test
+@ATTRIBUTE x0	NUMERIC
+@ATTRIBUTE x1	NUMERIC
+@ATTRIBUTE x2	NUMERIC
+@ATTRIBUTE x3	NUMERIC
+@ATTRIBUTE x4	NUMERIC
+@ATTRIBUTE x5	NUMERIC
+@ATTRIBUTE x6	NUMERIC
+@ATTRIBUTE x7	NUMERIC
+@ATTRIBUTE x8	NUMERIC
+@ATTRIBUTE x9	NUMERIC
+@ATTRIBUTE x10	NUMERIC
+@ATTRIBUTE class	{0,1}
+@DATA
+5075,0,1,0,1,1,0,0,0,1,1,1
+5097,0,1,0,1,0,1,0,1,1,0,1
+5451,0,1,1,1,1,0,0,0,1,1,1
+5823,0,0,0,0,1,1,0,0,0,0,0
+6299,1,1,1,1,0,0,0,1,1,0,1
+6431,0,0,1,1,1,0,0,0,0,0,0
+6477,0,1,0,1,0,0,0,0,1,0,1
+6641,1,1,0,1,1,0,0,1,0,0,1
+6674,0,0,1,1,1,0,0,0,0,0,1
+6701,0,1,0,0,1,1,0,0,1,0,1
+6838,1,0,0,1,1,0,0,0,0,0,1
+6959,0,0,0,0,0,0,1,0,1,0,1
+7216,0,0,1,0,1,1,0,0,0,0,1
+7375,1,1,0,1,1,0,0,0,0,0,0
+7451,1,0,0,0,0,0,0,0,0,0,0
+7502,0,1,1,1,1,0,1,0,0,0,1
+7584,0,0,0,0,1,0,0,1,1,0,0
+8050,0,0,0,0,0,0,1,0,0,0,0
+8364,1,1,0,0,0,0,0,0,1,0,1
+8548,0,0,0,0,0,0,0,0,0,0,0
+8583,0,0,0,0,0,1,0,0,0,0,0
+8678,1,1,0,0,1,0,0,1,1,0,1
+8742,1,1,0,0,1,0,0,1,0,0,1
+8772,1,0,0,0,1,0,0,0,0,0,0
+8800,1,0,0,0,0,0,0,0,0,0,0
+8816,1,0,0,0,0,0,0,0,0,0,0
+8885,1,0,0,0,0,0,0,0,1,0,1
+8898,1,0,1,0,1,0,0,0,0,0,1
+8928,1,0,0,1,1,0,0,0,0,0,0
+8945,1,0,0,0,0,0,0,0,0,0,0
+8984,1,1,0,0,0,0,0,1,1,0,1
+9005,0,0,0,0,0,0,0,0,0,0,0
+9046,0,0,0,0,0,1,0,0,0,0,0
+9143,0,0,0,0,1,0,0,0,0,0,0
+9756,1,0,0,1,1,0,0,1,1,0,0
+10007,1,0,1,0,0,0,0,1,0,0,1
+10180,0,0,0,0,0,0,0,0,0,0,0
+10420,1,0,0,0,0,0,0,0,0,0,0
+10929,1,1,1,1,1,0,0,0,1,0,1
+10956,1,0,0,0,0,0,0,0,0,0,0
