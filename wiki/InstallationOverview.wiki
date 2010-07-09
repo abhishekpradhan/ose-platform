@@ -30,8 +30,8 @@ ant dist               # --> build jar files into /dist folder
 
 For specific module, see
 
- * AnnieWebModule
- * AnnieIndexModule
- * AnnieSearchModule
- * LbjSearchModule
- * OsBuilderModule
+ * AnnieIndexModule    : index html web pages to make lucene feature index.
+ * AnnieSearchModule   : process feature query .
+ * AnnieWebModule      : back end for  object search web interface .
+ * LbjSearchModule     : learning module.
+ * OsBuilderModule     : tools to generate code for individual object search engine. 
