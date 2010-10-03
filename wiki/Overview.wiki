@@ -65,6 +65,7 @@ ant dist               # --> build jar files into /dist folder
 
 ==== More installation nodes ====
  * InstallationNotes
+ * OseBackend
 
 = Details =
 
