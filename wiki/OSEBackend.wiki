@@ -1,0 +1,13 @@
+#summary Describe OSE MySQL database to power objectsearch web applications.
+
+= Introduction =
+
+OSE uses MySQL DB to store the following data:
+  * Object domain specs
+  * Web pages Annotation (Tags)
+  * Training related data (model, weights, ...)
+
+= Details =
+
+See attached MySQL Schema in 
+/trunk/core/annieDB/schema/mysql_schema.sql
