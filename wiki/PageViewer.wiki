@@ -16,7 +16,6 @@ Note the following features:
 The missing piece is how to generate the result list shown on the left? The quick answer is, first, you generate a list of url in a text file, then generate a html file from the url list. Put it in the same folder as pageviewer.html (e.g : annieWeb/professor/), then tell PageViewer to use it in the url. Note the url in the screenshot say http://localhost:8080/annieWeb/professor/pageviewer.html?result=output.html&indexId=30000 . This means that the url list is stored in output.html and the cache is stored in indexId=30000 (IndexInfo table in the db).
 
 Here are the details 
- 1. An example of generating output.html is in the CommandLineSearch.java (attached)
- 1. Then run it with the following arguments
- 1. If Tomcat is run under Eclipse, republish the file (by refresh annieWeb). 
+ 1. An example of generating output.html is in the CommandLineSearch.java (under /trunk/core/lbjSearch/src/lbjse/tools). 
+ 1. Put the file into /professor folder in tomcat webapps folder. (If Tomcat is run under Eclipse, simply republish the file by refreshing annieWeb). 
  1. Open the url http://localhost:8080/annieWeb/professor/pageviewer.html?result=output.html&indexId=30000  and start annotating. 
