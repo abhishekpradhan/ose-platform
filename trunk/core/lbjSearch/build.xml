@@ -56,8 +56,11 @@
     <target depends="init" name="compile">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
-            <src path="lbjsrc:src"/>
-	    <exclude name="testing/**"/>
+            <src path="lbjsrc"/>
+            <src path="src"/>
+            <exclude name="lbjse/rank/inde/**"/>
+            <exclude name="testing/**"/>
+            <exclude name="lbjse/trainer/**"/>
             <classpath refid="lbjSearch.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
@@ -85,17 +88,17 @@
       <copy todir="${lib}" file="../annieDB/dist/lib/AnnieDB.jar"/>
       <copy todir="${lib}" file="../annieIndex/dist/lib/AnnieIndex.jar"/>
       <copy todir="${lib}" file="../annieSearch/dist/lib/AnnieSearch.jar"/>
-    </target>	
+    </target>
 
     <target description="Build all dependent projects." name="deps">
         <ant antfile="${annieSearch.location}/build.xml" inheritAll="false" target="deps"/>
         <ant antfile="${annieSearch.location}/build.xml" inheritAll="false" target="dist"/>
-	<ant target="updateJar"/>
+        <ant target="updateJar"/>
     </target>
     <target name="LBJ compile">
         <java classname="LBJ2.Main" failonerror="true" fork="yes">
             <jvmarg line="-Xms32m -Xmx512m"/>
-	    <arg line="-sourcepath src -gsp lbjsrc -d lbj  lbjsrc/${lbjsrc}.lbj"/>
+            <arg line="-sourcepath src -gsp lbjsrc -d lbj  lbjsrc/${lbjsrc}.lbj"/>
             <classpath refid="lbjSearch.classpath"/>
         </java>
     </target>
