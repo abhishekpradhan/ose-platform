@@ -9,6 +9,13 @@ This module contains code related to all the learning tasks in Object Search.
  1. Feature selection
  1. Generate classifiers
 
+= Compilation =
+ 1. 
+{{{
+ant deps
+ant "LBJ compile" -lbjsrc=common
+ant "LBJ compile" -lbjsrc=professor #if you want to work with professor domain
+}}}
 
 = Details =
 
