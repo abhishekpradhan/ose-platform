@@ -10,7 +10,7 @@ This module contains code related to all the learning tasks in Object Search.
  1. Generate classifiers
 
 = Compilation =
- 1. 
+
 {{{
 ant deps
 ant "LBJ compile" -lbjsrc=common
@@ -22,6 +22,7 @@ ant "LBJ compile" -lbjsrc=professor #if you want to work with professor domain
 == How to train a field ==
 
  1. Create a new session for the field
+   * Open the web interface at http://.../annieWeb/alearner/
  1. Annotate some docs with that field
  1. Add query values
     Go to alearner and add the tags found in datavis/explorer
