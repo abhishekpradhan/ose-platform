@@ -3,3 +3,7 @@
  1. Fix IndexId bug in CommandLineSearch.java
  1. Add sql insert query for lbjseData 
  1. More instructions.
+   * alearner
+   * create training session
+   * lbj generated code
+   
