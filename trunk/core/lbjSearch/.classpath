@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="testing/" kind="src" path="src"/>
 	<classpathentry kind="src" path="lbjsrc"/>
 	<classpathentry kind="src" path="conf"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -9,11 +9,11 @@
 	<classpathentry kind="lib" path="lib/AnnieSearch.jar" sourcepath="/annieSearch"/>
 	<classpathentry kind="lib" path="lib/lucene-2.3.2.jar"/>
 	<classpathentry kind="lib" path="lib/LBJ2Library.jar" sourcepath="/lbj2"/>
-	<classpathentry kind="lib" path="/lbj2/LBJ2man.jar"/>
 	<classpathentry kind="lib" path="lib/weka-3.4.5.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/annieIndex"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.5-bin.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/annieDB"/>
 	<classpathentry kind="lib" path="lbj"/>
+	<classpathentry kind="lib" path="lib/LBJ2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

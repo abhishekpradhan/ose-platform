@@ -50,23 +50,29 @@
     </target>
     <target name="clean">
         <delete dir="build/classes"/>
+        <delete dir="lbj/lbj"/>
+        <delete dir="lbj/lbjse"/>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="compile" name="build"/>
     <target depends="init" name="compile">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
-            <src path="lbjsrc"/>
             <src path="src"/>
-            <exclude name="lbjse/rank/inde/**"/>
-            <exclude name="testing/**"/>
-            <exclude name="lbjse/trainer/**"/>
+            <exclude name="testing/"/>
+            <exclude name="lbjse/rank/conditional/"/>
+            <exclude name="lbjse/rank/inde/"/>
+            <exclude name="lbjse/trainer/"/>
+            <!--
+            -->
             <classpath refid="lbjSearch.classpath"/>
         </javac>
+        <!--
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
             <src path="lbjsrc"/>
             <classpath refid="lbjSearch.classpath"/>
         </javac>
+        -->
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
             <src path="conf"/>
             <classpath refid="lbjSearch.classpath"/>
