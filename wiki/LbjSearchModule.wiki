@@ -44,7 +44,7 @@ ant "rank features" -Dsession=42 -Ddata=9
  1. Select search feature. 
  1. Train it. 
 {{{
-ant "LBJ learn" -Dsession=42 -Dtrec=c:\working\lbjSearch\grad_30002.tagtrec -Dnrounds=2
+ant "train concrete" -Dsession=42 -Dtrec=c:\working\lbjSearch\grad_30002.tagtrec -Dnrounds=2
 }}}
 
 == More commands ==
