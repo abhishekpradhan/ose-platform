@@ -35,6 +35,8 @@ ant "export tagtrec" -Dindex=30002 -Ddomain=4 -Doutput=c:\working\lbjSearch\grad
 {{{
 ant "LBJ compile" -Dlbjsrc=grad_s42
 }}}
+ 1. Create a training session 
+Take a look at this TrainingSessionData for examples
  1. Rank features for selection
 {{{
 ant "rank features" -Dsession=42 -Ddata=9
